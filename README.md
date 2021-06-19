@@ -10,3 +10,5 @@
 4. If using vscode, ensure the correct interpretor is set
 5. `python -m pip install --upgrade pip`
 6. `pip install -r requirements.txt`
+7. navigate to /src
+8. run `python -m flask run`
