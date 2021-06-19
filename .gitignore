@@ -1,3 +1,7 @@
+# COMP9447 Exclusions
+.vscode
+cs9447-env
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
