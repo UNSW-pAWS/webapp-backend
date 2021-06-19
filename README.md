@@ -14,3 +14,6 @@
 8. run `python -m flask run`
 
 Note: .gitignore will ensure your .vscode and venv folders do not get accidentally committed
+
+#### Local Imports aren't being resolved in vscode?
+If you use pylance as your python engine, you may have to add `"python.analysis.extraPaths": ["./src"]` to your settings.json inside the .vscode folder
