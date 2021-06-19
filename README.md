@@ -10,8 +10,7 @@
 4. If using vscode, ensure the correct interpretor is set
 5. `python -m pip install --upgrade pip`
 6. `pip install -r requirements.txt`
-7. navigate to /src
-8. run `python -m flask run`
+7. Navigate to `/src` and run `python -m flask run`
 
 Note: .gitignore will ensure your .vscode and venv folders do not get accidentally committed
 
