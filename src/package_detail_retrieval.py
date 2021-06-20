@@ -1,9 +1,34 @@
 import requests
 
+# ^x.y.z change y and z including self
+# ~x.y.z change z including self
+# range
+# a || b a and b creteria
+# * everything
+# a - b everything from a to b 
+def get_viable_npm_version(package):
+	# set to version specified
+	split = package.split("\t")
+	package_name = split[0]
+	version = split[1]
+	if "^" in version:
+		version = "latest"
+	elif "~" in version:
+		version = "latest"
+	# default to latest as everything fits
+	elif "*" in version:
+		version = "latest"
+	elif "||" in version:
+		version = "latest"
+	elif "==" not in version and (">" in version or "<" in version or "-" in version):
+		version = "latest"
+	return package_name,version
+	
 '''
 for npm query site: https://registry.npmjs.org/npm/,
 Documentation: https://github.com/npm/registry/blob/master/docs/REGISTRY-API.md,
 usage: https://registry.npmjs.org/[package name]/[version if specified or type 'latest'] -> return json object -> json_object["dependencies"] to get dependencies
+need to understand the version number system: https://semver.npmjs.com/
 '''
 def npm_dependecies_search(package_list, level, results):
 	# first exploration
@@ -47,12 +72,13 @@ def npm_dependecies_search(package_list, level, results):
 				dependencies = json_response["dependencies"]
 			# scan the dependencies if it needs latest or a specific version
 			for dependecy in dependencies:
-				if "^" not in dependencies[dependecy]:
-					new_explore_frontiers.append(dependecy + "==" + str(dependencies[dependecy]))
-					frontier_dependency.append(dependecy + "==" + str(dependencies[dependecy]))
+				package_name, package_version = get_viable_npm_version(dependecy+"\t"+dependencies[dependecy])
+				if "latest" in package_version:
+					frontier_dependency.append(package_name)
+					new_explore_frontiers.append(package_name)
 				else:
-					new_explore_frontiers.append(dependecy)
-					frontier_dependency.append(dependecy)
+					frontier_dependency.append(package_name+"=="+package_version)
+					new_explore_frontiers.append(package_name+"=="+package_version)
 			# store the dependencies in the dictionary
 			results[frontier] = frontier_dependency
 		# update the next level
@@ -77,78 +103,4 @@ def package_detail_retrieval(package_manager_type, package_list, level=1):
 	if package_manager_type ==  "npm":
 		npm_dependecies_search(package_list,level,results)
 	return results
-            
-            
-    
-    # return dumps({
-    #     "response": 
-    #     [{
-    #         "name": 'Colour',
-	#         "children": [
-	#             {
-    #                 "name": 'Black',
-    #                 "pathProps": 'black',
-	# 	            "children": []
-	#             }, 
-	#             {
-	# 	            "name": 'Blue',
-	# 	            "children": [
-	# 	                {
-	# 		                "name": 'Aquamarine',
-	# 		                "children": []
-	# 	                }, 
-	# 	                {
-	# 		                "name": 'Cyan',
-	# 		                "children": []
-	# 	                }, 
-	# 	                {
-	# 		                "name": 'Navy',
-	# 		                "children": []
-	# 	                }, 
-	# 	                {
-	# 		                "name": 'Turquoise',
-	# 		                "children": []
-	# 	                }]
-	#             }, 
-	#             {
-	# 	            "name": 'Green',
-	# 	            "children": []
-	#             }, 
-	#             {
-	# 	            "name": 'Purple',
-	# 	            "children": [
-	# 	                {
-	# 		                "name": 'Indigo',
-	# 		                "children": []
-	# 	                }, 
-	# 	                {
-	# 		                "name": 'Violet',
-	# 		                "children": []
-	# 	                }]
-	#             }, 
-	#             {
-	# 	            "name": 'Red',
-	# 	            "children": [
-	# 	                {
-	# 		                "name": 'Crimson',
-	# 		                "children": []
-	# 	                }, 
-	# 	                {
-	# 		                "name": 'Maroon',
-	# 		                "children": []
-	# 	                }, 
-	# 	                {
-	# 		                "name": 'Scarlet',
-	# 		                "children": []
-	# 	                }]
-	#             }, 
-	#             {
-	# 	            "name": 'White',
-	# 	            "children": []
-	#             }, 
-	#             {
-	# 	            "name": 'Yellow',
-	# 	            "children": []
-	#             }]
-    #     }]
-    # })
+	
