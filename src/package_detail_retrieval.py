@@ -1,27 +1,235 @@
 import requests
 
-# ^x.y.z change y and z including self
-# ~x.y.z change z including self
+# ^x.y.z y and z can be bigger or itself but x must match
+# ~x.y.z z can be bigger or itself but x and y must match
 # range
 # a || b a and b creteria
-# * everything
+# * everything 
 # a - b everything from a to b 
-def get_viable_npm_version(package):
-	# set to version specified
-	split = package.split("\t")
-	package_name = split[0]
-	version = split[1]
+def get_viable_npm_version(package_name, version):
+	# base case where version had been specified
+	if "^" not in version and "~" not in version and "*" not in version and ">" not in version and "<" not in version and "-" not in version:
+		return package_name, version
+	# query registery and get json reply
+	link = "https://registry.npmjs.org/{}".format(package_name)
+	response = requests.get(link)
+	json_response = response.json()
+	# get all the version and turn it into a list
+	package_versions = list(json_response["versions"].keys())
+	# find latest version that match x
 	if "^" in version:
-		version = "latest"
+		standard_version = version.split(".")
+		for i in range(len(package_versions)-1,-1,-1):
+			compare_version = package_versions[i].split(".")
+			max_length = min(len(standard_version),len(compare_version))
+			x_match = False
+			found_version = False
+			for h in range(0, max_length):
+				if h==0 and int(compare_version[h]) > int(standard_version[h][1:]):
+					break
+				if h==0 and int(compare_version[h]) == int(standard_version[h][1:]):
+					x_match = True
+				if h==0 and max_length == 1 and int(compare_version[h]) == int(standard_version[h][1:]):
+					version = package_versions[i]
+					found_version = True
+				if h==1 and int(compare_version[h]) >= int(standard_version[h]) and x_match==True:
+					version = package_versions[i]
+					found_version = True
+				if h == 2 and not compare_version[h].isnumeric() and x_match==True:
+					found_version = False
+			if found_version == True:
+				break
+	# find latest version that match x and y
 	elif "~" in version:
-		version = "latest"
+		standard_version = version.split(".")
+		for i in range(len(package_versions)-1,-1,-1):
+			compare_version = package_versions[i].split(".")
+			max_length = min(len(standard_version),len(compare_version))
+			x_match = False
+			y_match = False
+			found_version = False
+			for h in range(0, max_length):
+				if h==0 and int(compare_version[h]) > int(standard_version[h][1:]):
+					break
+				if h==0 and int(compare_version[h]) == int(standard_version[h][1:]):
+					x_match = True
+				if h==0 and max_length == 1 and int(compare_version[h]) == int(standard_version[h][1:]):
+					version = package_versions[i]
+					found_version = True
+				if h==1 and max_length == 2 and int(compare_version[h]) == int(standard_version[h]):
+					version = package_versions[i]
+					found_version = True
+				if h==1 and int(compare_version[h]) == int(standard_version[h]) and x_match==True:
+					y_match = True
+				if h == 2 and compare_version[h].isnumeric() and int(compare_version[h]) >= int(standard_version[h]) and x_match==True and y_match==True:
+					found_version = True
+					version = package_versions[i]
+			if found_version == True:
+				break
 	# default to latest as everything fits
 	elif "*" in version:
-		version = "latest"
+		for i in range(len(package_versions)-1,-1,-1):
+			compare_version = package_versions[i].split(".")
+			found_version = True
+			for h in range(0, len(compare_version)):
+				if not compare_version[h].isnumeric():
+					found_version = False
+			if found_version == True:
+				version = package_versions[i]
+				break
+	elif "-" in version:
+		upper_bound = version.split("-")[1]
+		standard_version = upper_bound.split(".")
+		for i in range(len(package_versions)-1,-1,-1):
+			compare_version = package_versions[i].split(".")
+			max_length = min(len(standard_version),len(compare_version))
+			x_match = False
+			y_match = False
+			found_version = False
+			for h in range(0, max_length):
+				if not standard_version[h].isnumeric():
+					break
+				if h==0 and int(compare_version[h]) > int(standard_version[h]):
+					break
+				if h==0 and int(compare_version[h]) <= int(standard_version[h]):
+					x_match = True
+				if h==0 and max_length == 1 and int(compare_version[h]) <= int(standard_version[h]):
+					version = package_versions[i]
+					found_version = True
+				if h==1 and max_length == 2 and int(compare_version[h]) <= int(standard_version[h]):
+					version = package_versions[i]
+					found_version = True
+				if h==1 and int(compare_version[h]) <= int(standard_version[h]) and x_match==True:
+					y_match = True
+				if h == 2 and compare_version[h].isnumeric() and int(compare_version[h]) <= int(standard_version[h]) and x_match==True and y_match==True:
+					found_version = True
+					version = package_versions[i]
+			if found_version == True:
+				break
+	# find latest that match createria
 	elif "||" in version:
-		version = "latest"
-	elif "==" not in version and (">" in version or "<" in version or "-" in version):
-		version = "latest"
+		package_name ,version = get_viable_npm_version(package_name, version.split("||")[1])
+	# find latest that match createria
+	elif ">=" in version: 
+		split_result = version.split(">=")
+		if "^" in split_result[1] or "~" in split_result[1] or "*" in split_result[1] or ">" in split_result[1] or "<" in split_result[1] or "-" in split_result[1]:
+			return get_viable_npm_version(package_name, split_result[1])
+		upper_bound = split_result[1].lstrip()
+		standard_version = upper_bound.split(".")
+		for i in range(len(package_versions)-1,-1,-1):
+			compare_version = package_versions[i].split(".")
+			max_length = min(len(standard_version),len(compare_version))
+			x_match = False
+			y_match = False
+			found_version = False
+			for h in range(0, max_length):
+				if not standard_version[h].isnumeric() and h ==0:
+					break
+				if h==0 and int(compare_version[h]) >= int(standard_version[h]):
+					x_match = True
+				if h==0 and max_length == 1 and int(compare_version[h]) >= int(standard_version[h]):
+					version = package_versions[i]
+					found_version = True
+				if h==1 and max_length == 2 and int(compare_version[h]) >= int(standard_version[h]):
+					version = package_versions[i]
+					found_version = True
+				if h==1 and int(compare_version[h]) >= int(standard_version[h]) and x_match==True:
+					y_match = True
+				if h == 2 and compare_version[h].isnumeric() and int(compare_version[h]) >= int(standard_version[h]) and x_match==True and y_match==True:
+					found_version = True
+					version = package_versions[i]
+			if found_version == True:
+				break
+	elif ">" in version:
+		split_result = version.split(">=")
+		if "^" in split_result[1] or "~" in split_result[1] or "*" in split_result[1] or ">" in split_result[1] or "<" in split_result[1] or "-" in split_result[1]:
+			return get_viable_npm_version(package_name, split_result[1])
+		upper_bound = split_result[1].lstrip()
+		standard_version = upper_bound.split(".")
+		for i in range(len(package_versions)-1,-1,-1):
+			compare_version = package_versions[i].split(".")
+			max_length = min(len(standard_version),len(compare_version))
+			x_match = False
+			y_match = False
+			found_version = False
+			for h in range(0, max_length):
+				if not standard_version[h].isnumeric() and h ==0:
+					break
+				if h==0 and int(compare_version[h]) >= int(standard_version[h]):
+					x_match = True
+				if h==1 and int(compare_version[h]) >= int(standard_version[h]) and x_match==True:
+					y_match = True
+				if h==0 and max_length == 1 and int(compare_version[h]) > int(standard_version[h]):
+					version = package_versions[i]
+					found_version = True
+				if h==1 and max_length == 2 and int(compare_version[h]) > int(standard_version[h]):
+					version = package_versions[i]
+					found_version = True
+				if h == 2 and compare_version[h].isnumeric() and int(compare_version[h]) > int(standard_version[h]) and x_match==True and y_match==True:
+					found_version = True
+					version = package_versions[i]
+			if found_version == True:
+				break
+	elif "<=" in version:
+		split_result = version.split("<=")
+		if "^" in split_result[1] or "~" in split_result[1] or "*" in split_result[1] or ">" in split_result[1] or "<" in split_result[1] or "-" in split_result[1]:
+			return get_viable_npm_version(package_name, split_result[1])
+		upper_bound = split_result[1].lstrip()
+		standard_version = upper_bound.split(".")
+		for i in range(len(package_versions)-1,-1,-1):
+			compare_version = package_versions[i].split(".")
+			max_length = min(len(standard_version),len(compare_version))
+			x_match = False
+			y_match = False
+			found_version = False
+			for h in range(0, max_length):
+				if not standard_version[h].isnumeric() and h ==0:
+					break
+				if h==0 and int(compare_version[h]) <= int(standard_version[h]):
+					x_match = True
+				if h==0 and max_length == 1 and int(compare_version[h]) <= int(standard_version[h]):
+					version = package_versions[i]
+					found_version = True
+				if h==1 and max_length == 2 and int(compare_version[h]) <= int(standard_version[h]):
+					version = package_versions[i]
+					found_version = True
+				if h==1 and int(compare_version[h]) <= int(standard_version[h]) and x_match==True:
+					y_match = True
+				if h == 2 and compare_version[h].isnumeric() and int(compare_version[h]) <= int(standard_version[h]) and x_match==True and y_match==True:
+					found_version = True
+					version = package_versions[i]
+			if found_version == True:
+				break
+	elif "<" in version:
+		split_result = version.split("<")
+		if "^" in split_result[1] or "~" in split_result[1] or "*" in split_result[1] or ">" in split_result[1] or "<" in split_result[1] or "-" in split_result[1]:
+			return get_viable_npm_version(package_name, split_result[1])
+		upper_bound = split_result[1].lstrip()
+		standard_version = upper_bound.split(".")
+		for i in range(len(package_versions)-1,-1,-1):
+			compare_version = package_versions[i].split(".")
+			max_length = min(len(standard_version),len(compare_version))
+			x_match = False
+			y_match = False
+			found_version = False
+			for h in range(0, max_length):
+				if not standard_version[h].isnumeric() and h ==0:
+					break
+				if h==0 and int(compare_version[h]) <= int(standard_version[h]):
+					x_match = True
+				if h==0 and max_length == 1 and int(compare_version[h]) < int(standard_version[h]):
+					version = package_versions[i]
+					found_version = True
+				if h==1 and max_length == 2 and int(compare_version[h]) < int(standard_version[h]):
+					version = package_versions[i]
+					found_version = True
+				if h==1 and int(compare_version[h]) <= int(standard_version[h]) and x_match==True:
+					y_match = True
+				if h == 2 and compare_version[h].isnumeric() and int(compare_version[h]) < int(standard_version[h]) and x_match==True and y_match==True:
+					found_version = True
+					version = package_versions[i]
+			if found_version == True:
+				break
 	return package_name,version
 	
 '''
@@ -72,13 +280,9 @@ def npm_dependecies_search(package_list, level, results):
 				dependencies = json_response["dependencies"]
 			# scan the dependencies if it needs latest or a specific version
 			for dependecy in dependencies:
-				package_name, package_version = get_viable_npm_version(dependecy+"\t"+dependencies[dependecy])
-				if "latest" in package_version:
-					frontier_dependency.append(package_name)
-					new_explore_frontiers.append(package_name)
-				else:
-					frontier_dependency.append(package_name+"=="+package_version)
-					new_explore_frontiers.append(package_name+"=="+package_version)
+				package_name, package_version = get_viable_npm_version(dependecy,dependencies[dependecy])
+				frontier_dependency.append(package_name+"=="+package_version)
+				new_explore_frontiers.append(package_name+"=="+package_version)
 			# store the dependencies in the dictionary
 			results[frontier] = frontier_dependency
 		# update the next level
