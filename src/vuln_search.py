@@ -1,4 +1,6 @@
 import requests
+from urllib3.exceptions import InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 
 def package_list_data(package_dic):
     all_data = {}
