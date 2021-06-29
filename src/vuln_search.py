@@ -49,7 +49,6 @@ def extract_relevant_data(search_word):
 
     return result_list
 
-print(package_list_data({'react': 1, 'react-dom': 1, 'react-router-dom': 1, 'loose-envify': 1, 'object-assign': 1, 'scheduler': 1, '@babel/runtime': 1, 'history': 1, 'prop-types': 1, 'react-router': 1, 'tiny-invariant': 1, 'tiny-warning': 1}))
 
 #replace - with + (e.g. prop+types)
 
