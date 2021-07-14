@@ -1,0 +1,712 @@
+[
+    {
+        "S3": [{
+            "AccessPoint.PublicAccessBlockConfiguration": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-accesspoint-publicaccessblockconfiguration.html",
+                "Properties": {
+                  "BlockPublicAcls": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-accesspoint-publicaccessblockconfiguration.html#cfn-s3-accesspoint-publicaccessblockconfiguration-blockpublicacls",
+                    "UpdateType": "Immutable",
+                    "Required": false,
+                    "PrimitiveType": "Boolean"
+                  },
+                  "IgnorePublicAcls": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-accesspoint-publicaccessblockconfiguration.html#cfn-s3-accesspoint-publicaccessblockconfiguration-ignorepublicacls",
+                    "UpdateType": "Immutable",
+                    "Required": false,
+                    "PrimitiveType": "Boolean"
+                  },
+                  "BlockPublicPolicy": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-accesspoint-publicaccessblockconfiguration.html#cfn-s3-accesspoint-publicaccessblockconfiguration-blockpublicpolicy",
+                    "UpdateType": "Immutable",
+                    "Required": false,
+                    "PrimitiveType": "Boolean"
+                  },
+                  "RestrictPublicBuckets": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-accesspoint-publicaccessblockconfiguration.html#cfn-s3-accesspoint-publicaccessblockconfiguration-restrictpublicbuckets",
+                    "UpdateType": "Immutable",
+                    "Required": false,
+                    "PrimitiveType": "Boolean"
+                  }
+                }
+            },
+            "Bucket.OwnershipControls": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-ownershipcontrols.html",
+                "Properties": {
+                  "Rules": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-ownershipcontrols.html#cfn-s3-bucket-ownershipcontrols-rules",
+                    "DuplicatesAllowed": false,
+                    "ItemType": "OwnershipControlsRule",
+                    "Required": true,
+                    "Type": "List",
+                    "UpdateType": "Mutable"
+                  }
+                }
+            },
+            "Bucket.ReplicaModifications": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-replicamodifications.html",
+                "Properties": {
+                  "Status": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-replicamodifications.html#cfn-s3-bucket-replicamodifications-status",
+                    "PrimitiveType": "String",
+                    "Required": true,
+                    "UpdateType": "Mutable"
+                  }
+                }
+              },
+              "Bucket.Destination": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-destination.html",
+                "Properties": {
+                  "BucketAccountId": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-destination.html#cfn-s3-bucket-destination-bucketaccountid",
+                    "PrimitiveType": "String",
+                    "Required": false,
+                    "UpdateType": "Mutable"
+                  },
+                  "BucketArn": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-destination.html#cfn-s3-bucket-destination-bucketarn",
+                    "PrimitiveType": "String",
+                    "Required": true,
+                    "UpdateType": "Mutable"
+                  },
+                  "Format": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-destination.html#cfn-s3-bucket-destination-format",
+                    "PrimitiveType": "String",
+                    "Required": true,
+                    "UpdateType": "Mutable"
+                  },
+                  "Prefix": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-destination.html#cfn-s3-bucket-destination-prefix",
+                    "PrimitiveType": "String",
+                    "Required": false,
+                    "UpdateType": "Mutable"
+                  }
+                }
+              },
+              "Bucket.OwnershipControlsRule": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-ownershipcontrolsrule.html",
+                "Properties": {
+                  "ObjectOwnership": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-ownershipcontrolsrule.html#cfn-s3-bucket-ownershipcontrolsrule-objectownership",
+                    "PrimitiveType": "String",
+                    "Required": false,
+                    "UpdateType": "Mutable"
+                  }
+                }
+              },
+             "Bucket.AccessControlTranslation": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-accesscontroltranslation.html",
+                "Properties": {
+                  "Owner": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-accesscontroltranslation.html#cfn-s3-bucket-accesscontroltranslation-owner",
+                    "PrimitiveType": "String",
+                    "Required": true,
+                    "UpdateType": "Mutable"
+                  }
+                }
+              },
+              "Bucket.VersioningConfiguration": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-versioningconfig.html",
+                "Properties": {
+                  "Status": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-versioningconfig.html#cfn-s3-bucket-versioningconfig-status",
+                    "PrimitiveType": "String",
+                    "Required": true,
+                    "UpdateType": "Mutable"
+                  }
+                }
+              },
+              "Bucket.ServerSideEncryptionByDefault": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-serversideencryptionbydefault.html",
+                "Properties": {
+                  "KMSMasterKeyID": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-serversideencryptionbydefault.html#cfn-s3-bucket-serversideencryptionbydefault-kmsmasterkeyid",
+                    "PrimitiveType": "String",
+                    "Required": false,
+                    "UpdateType": "Mutable"
+                  },
+                  "SSEAlgorithm": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-serversideencryptionbydefault.html#cfn-s3-bucket-serversideencryptionbydefault-ssealgorithm",
+                    "PrimitiveType": "String",
+                    "Required": true,
+                    "UpdateType": "Mutable"
+                  }
+                }
+              },
+              "Bucket.SseKmsEncryptedObjects": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-ssekmsencryptedobjects.html",
+                "Properties": {
+                  "Status": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-ssekmsencryptedobjects.html#cfn-s3-bucket-ssekmsencryptedobjects-status",
+                    "PrimitiveType": "String",
+                    "Required": true,
+                    "UpdateType": "Mutable"
+                  }
+                }
+              },
+              "Bucket.ObjectLockConfiguration": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-objectlockconfiguration.html",
+                "Properties": {
+                  "ObjectLockEnabled": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-objectlockconfiguration.html#cfn-s3-bucket-objectlockconfiguration-objectlockenabled",
+                    "PrimitiveType": "String",
+                    "Required": false,
+                    "UpdateType": "Mutable"
+                  },
+                  "Rule": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-objectlockconfiguration.html#cfn-s3-bucket-objectlockconfiguration-rule",
+                    "Required": false,
+                    "Type": "ObjectLockRule",
+                    "UpdateType": "Mutable"
+                  }
+                }
+              },
+              "Bucket.DeleteMarkerReplication": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-deletemarkerreplication.html",
+                "Properties": {
+                  "Status": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-deletemarkerreplication.html#cfn-s3-bucket-deletemarkerreplication-status",
+                    "PrimitiveType": "String",
+                    "Required": false,
+                    "UpdateType": "Mutable"
+                  }
+                }
+              },
+              "Bucket.ReplicationRule": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-replicationconfiguration-rules.html",
+                "Properties": {
+                  "DeleteMarkerReplication": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-replicationconfiguration-rules.html#cfn-s3-bucket-replicationrule-deletemarkerreplication",
+                    "Required": false,
+                    "Type": "DeleteMarkerReplication",
+                    "UpdateType": "Mutable"
+                  },
+                  "Destination": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-replicationconfiguration-rules.html#cfn-s3-bucket-replicationconfiguration-rules-destination",
+                    "Required": true,
+                    "Type": "ReplicationDestination",
+                    "UpdateType": "Mutable"
+                  },
+                  "Filter": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-replicationconfiguration-rules.html#cfn-s3-bucket-replicationrule-filter",
+                    "Required": false,
+                    "Type": "ReplicationRuleFilter",
+                    "UpdateType": "Mutable"
+                  },
+                  "Id": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-replicationconfiguration-rules.html#cfn-s3-bucket-replicationconfiguration-rules-id",
+                    "PrimitiveType": "String",
+                    "Required": false,
+                    "UpdateType": "Mutable"
+                  },
+                  "Prefix": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-replicationconfiguration-rules.html#cfn-s3-bucket-replicationconfiguration-rules-prefix",
+                    "PrimitiveType": "String",
+                    "Required": false,
+                    "UpdateType": "Mutable"
+                  },
+                  "Priority": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-replicationconfiguration-rules.html#cfn-s3-bucket-replicationrule-priority",
+                    "PrimitiveType": "Integer",
+                    "Required": false,
+                    "UpdateType": "Mutable"
+                  },
+                  "SourceSelectionCriteria": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-replicationconfiguration-rules.html#cfn-s3-bucket-replicationrule-sourceselectioncriteria",
+                    "Required": false,
+                    "Type": "SourceSelectionCriteria",
+                    "UpdateType": "Mutable"
+                  },
+                  "Status": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-replicationconfiguration-rules.html#cfn-s3-bucket-replicationconfiguration-rules-status",
+                    "PrimitiveType": "String",
+                    "Required": true,
+                    "UpdateType": "Mutable"
+                  }
+                }
+              },
+              "AccessPoint.VpcConfiguration": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-accesspoint-vpcconfiguration.html",
+                "Properties": {
+                  "VpcId": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-accesspoint-vpcconfiguration.html#cfn-s3-accesspoint-vpcconfiguration-vpcid",
+                    "UpdateType": "Immutable",
+                    "Required": false,
+                    "PrimitiveType": "String"
+                  }
+                }
+              },
+              "Bucket.ObjectLockRule": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-objectlockrule.html",
+                "Properties": {
+                  "DefaultRetention": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-objectlockrule.html#cfn-s3-bucket-objectlockrule-defaultretention",
+                    "Required": false,
+                    "Type": "DefaultRetention",
+                    "UpdateType": "Mutable"
+                  }
+                }
+              },
+              "Bucket.Rule": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-lifecycleconfig-rule.html",
+                "Properties": {
+                  "AbortIncompleteMultipartUpload": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-lifecycleconfig-rule.html#cfn-s3-bucket-rule-abortincompletemultipartupload",
+                    "Required": false,
+                    "Type": "AbortIncompleteMultipartUpload",
+                    "UpdateType": "Mutable"
+                  },
+                  "ExpirationDate": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-lifecycleconfig-rule.html#cfn-s3-bucket-lifecycleconfig-rule-expirationdate",
+                    "PrimitiveType": "Timestamp",
+                    "Required": false,
+                    "UpdateType": "Mutable"
+                  },
+                  "ExpirationInDays": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-lifecycleconfig-rule.html#cfn-s3-bucket-lifecycleconfig-rule-expirationindays",
+                    "PrimitiveType": "Integer",
+                    "Required": false,
+                    "UpdateType": "Mutable"
+                  },
+                  "ExpiredObjectDeleteMarker": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-lifecycleconfig-rule.html#cfn-s3-bucket-rule-expiredobjectdeletemarker",
+                    "PrimitiveType": "Boolean",
+                    "Required": false,
+                    "UpdateType": "Mutable"
+                  },
+                  "Id": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-lifecycleconfig-rule.html#cfn-s3-bucket-lifecycleconfig-rule-id",
+                    "PrimitiveType": "String",
+                    "Required": false,
+                    "UpdateType": "Mutable"
+                  },
+                  "NoncurrentVersionExpirationInDays": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-lifecycleconfig-rule.html#cfn-s3-bucket-lifecycleconfig-rule-noncurrentversionexpirationindays",
+                    "PrimitiveType": "Integer",
+                    "Required": false,
+                    "UpdateType": "Mutable"
+                  },
+                  "NoncurrentVersionTransition": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-lifecycleconfig-rule.html#cfn-s3-bucket-lifecycleconfig-rule-noncurrentversiontransition",
+                    "Required": false,
+                    "Type": "NoncurrentVersionTransition",
+                    "UpdateType": "Mutable"
+                  },
+                  "NoncurrentVersionTransitions": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-lifecycleconfig-rule.html#cfn-s3-bucket-lifecycleconfig-rule-noncurrentversiontransitions",
+                    "DuplicatesAllowed": false,
+                    "ItemType": "NoncurrentVersionTransition",
+                    "Required": false,
+                    "Type": "List",
+                    "UpdateType": "Mutable"
+                  },
+                  "Prefix": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-lifecycleconfig-rule.html#cfn-s3-bucket-lifecycleconfig-rule-prefix",
+                    "PrimitiveType": "String",
+                    "Required": false,
+                    "UpdateType": "Mutable"
+                  },
+                  "Status": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-lifecycleconfig-rule.html#cfn-s3-bucket-lifecycleconfig-rule-status",
+                    "PrimitiveType": "String",
+                    "Required": true,
+                    "UpdateType": "Mutable"
+                  },
+                  "TagFilters": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-lifecycleconfig-rule.html#cfn-s3-bucket-rule-tagfilters",
+                    "DuplicatesAllowed": false,
+                    "ItemType": "TagFilter",
+                    "Required": false,
+                    "Type": "List",
+                    "UpdateType": "Mutable"
+                  },
+                  "Transition": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-lifecycleconfig-rule.html#cfn-s3-bucket-lifecycleconfig-rule-transition",
+                    "Required": false,
+                    "Type": "Transition",
+                    "UpdateType": "Mutable"
+                  },
+                  "Transitions": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-lifecycleconfig-rule.html#cfn-s3-bucket-lifecycleconfig-rule-transitions",
+                    "DuplicatesAllowed": false,
+                    "ItemType": "Transition",
+                    "Required": false,
+                    "Type": "List",
+                    "UpdateType": "Mutable"
+                  }
+                }
+              },
+              "Bucket.ReplicationRuleAndOperator": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-replicationruleandoperator.html",
+                "Properties": {
+                  "Prefix": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-replicationruleandoperator.html#cfn-s3-bucket-replicationruleandoperator-prefix",
+                    "PrimitiveType": "String",
+                    "Required": false,
+                    "UpdateType": "Mutable"
+                  },
+                  "TagFilters": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-replicationruleandoperator.html#cfn-s3-bucket-replicationruleandoperator-tagfilters",
+                    "DuplicatesAllowed": false,
+                    "ItemType": "TagFilter",
+                    "Required": false,
+                    "Type": "List",
+                    "UpdateType": "Mutable"
+                  }
+                }
+              },
+              "Bucket.BucketEncryption": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-bucketencryption.html",
+                "Properties": {
+                  "ServerSideEncryptionConfiguration": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-bucketencryption.html#cfn-s3-bucket-bucketencryption-serversideencryptionconfiguration",
+                    "DuplicatesAllowed": false,
+                    "ItemType": "ServerSideEncryptionRule",
+                    "Required": true,
+                    "Type": "List",
+                    "UpdateType": "Mutable"
+                  }
+                }
+              },
+              "Bucket.LifecycleConfiguration": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-lifecycleconfig.html",
+                "Properties": {
+                  "Rules": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-lifecycleconfig.html#cfn-s3-bucket-lifecycleconfig-rules",
+                    "DuplicatesAllowed": false,
+                    "ItemType": "Rule",
+                    "Required": true,
+                    "Type": "List",
+                    "UpdateType": "Mutable"
+                  }
+                }
+              },
+              "Bucket.ReplicationDestination": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-replicationconfiguration-rules-destination.html",
+                "Properties": {
+                  "AccessControlTranslation": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-replicationconfiguration-rules-destination.html#cfn-s3-bucket-replicationdestination-accesscontroltranslation",
+                    "Required": false,
+                    "Type": "AccessControlTranslation",
+                    "UpdateType": "Mutable"
+                  },
+                  "Account": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-replicationconfiguration-rules-destination.html#cfn-s3-bucket-replicationdestination-account",
+                    "PrimitiveType": "String",
+                    "Required": false,
+                    "UpdateType": "Mutable"
+                  },
+                  "Bucket": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-replicationconfiguration-rules-destination.html#cfn-s3-bucket-replicationconfiguration-rules-destination-bucket",
+                    "PrimitiveType": "String",
+                    "Required": true,
+                    "UpdateType": "Mutable"
+                  },
+                  "EncryptionConfiguration": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-replicationconfiguration-rules-destination.html#cfn-s3-bucket-replicationdestination-encryptionconfiguration",
+                    "Required": false,
+                    "Type": "EncryptionConfiguration",
+                    "UpdateType": "Mutable"
+                  },
+                  "Metrics": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-replicationconfiguration-rules-destination.html#cfn-s3-bucket-replicationdestination-metrics",
+                    "Required": false,
+                    "Type": "Metrics",
+                    "UpdateType": "Mutable"
+                  },
+                  "ReplicationTime": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-replicationconfiguration-rules-destination.html#cfn-s3-bucket-replicationdestination-replicationtime",
+                    "Required": false,
+                    "Type": "ReplicationTime",
+                    "UpdateType": "Mutable"
+                  },
+                  "StorageClass": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-replicationconfiguration-rules-destination.html#cfn-s3-bucket-replicationconfiguration-rules-destination-storageclass",
+                    "PrimitiveType": "String",
+                    "Required": false,
+                    "UpdateType": "Mutable"
+                  }
+                }
+              },
+              "Bucket.ServerSideEncryptionRule": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-serversideencryptionrule.html",
+                "Properties": {
+                  "BucketKeyEnabled": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-serversideencryptionrule.html#cfn-s3-bucket-serversideencryptionrule-bucketkeyenabled",
+                    "PrimitiveType": "Boolean",
+                    "Required": false,
+                    "UpdateType": "Mutable"
+                  },
+                  "ServerSideEncryptionByDefault": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-serversideencryptionrule.html#cfn-s3-bucket-serversideencryptionrule-serversideencryptionbydefault",
+                    "Required": false,
+                    "Type": "ServerSideEncryptionByDefault",
+                    "UpdateType": "Mutable"
+                  }
+                }
+              },
+              "StorageLens.S3BucketDestination": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelens-s3bucketdestination.html",
+                "Properties": {
+                  "OutputSchemaVersion": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelens-s3bucketdestination.html#cfn-s3-storagelens-s3bucketdestination-outputschemaversion",
+                    "UpdateType": "Mutable",
+                    "Required": true,
+                    "PrimitiveType": "String"
+                  },
+                  "Format": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelens-s3bucketdestination.html#cfn-s3-storagelens-s3bucketdestination-format",
+                    "UpdateType": "Mutable",
+                    "Required": true,
+                    "PrimitiveType": "String"
+                  },
+                  "AccountId": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelens-s3bucketdestination.html#cfn-s3-storagelens-s3bucketdestination-accountid",
+                    "UpdateType": "Mutable",
+                    "Required": true,
+                    "PrimitiveType": "String"
+                  },
+                  "Arn": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelens-s3bucketdestination.html#cfn-s3-storagelens-s3bucketdestination-arn",
+                    "UpdateType": "Mutable",
+                    "Required": true,
+                    "PrimitiveType": "String"
+                  },
+                  "Prefix": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelens-s3bucketdestination.html#cfn-s3-storagelens-s3bucketdestination-prefix",
+                    "UpdateType": "Mutable",
+                    "Required": false,
+                    "PrimitiveType": "String"
+                  },
+                  "Encryption": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelens-s3bucketdestination.html#cfn-s3-storagelens-s3bucketdestination-encryption",
+                    "UpdateType": "Mutable",
+                    "Required": false,
+                    "Type": "Encryption"
+                  }
+                }
+              },
+              "Bucket.EncryptionConfiguration": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-encryptionconfiguration.html",
+                "Properties": {
+                  "ReplicaKmsKeyID": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-encryptionconfiguration.html#cfn-s3-bucket-encryptionconfiguration-replicakmskeyid",
+                    "PrimitiveType": "String",
+                    "Required": true,
+                    "UpdateType": "Mutable"
+                  }
+                }
+              },
+              "AccessPoint": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-accesspoint.html",
+                "Properties": {
+                  "Name": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-accesspoint.html#cfn-s3-accesspoint-name",
+                    "UpdateType": "Mutable",
+                    "Required": false,
+                    "PrimitiveType": "String"
+                  },
+                  "Bucket": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-accesspoint.html#cfn-s3-accesspoint-bucket",
+                    "UpdateType": "Immutable",
+                    "Required": true,
+                    "PrimitiveType": "String"
+                  },
+                  "VpcConfiguration": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-accesspoint.html#cfn-s3-accesspoint-vpcconfiguration",
+                    "UpdateType": "Immutable",
+                    "Required": false,
+                    "Type": "VpcConfiguration"
+                  },
+                  "PublicAccessBlockConfiguration": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-accesspoint.html#cfn-s3-accesspoint-publicaccessblockconfiguration",
+                    "UpdateType": "Immutable",
+                    "Required": false,
+                    "Type": "PublicAccessBlockConfiguration"
+                  },
+                  "Policy": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-accesspoint.html#cfn-s3-accesspoint-policy",
+                    "UpdateType": "Mutable",
+                    "Required": false,
+                    "PrimitiveType": "Json"
+                  }
+                },
+                "Attributes": {
+                  "NetworkOrigin": {
+                    "PrimitiveType": "String"
+                  }
+                }
+              },
+              "Bucket": {
+                "Attributes": {
+                  "Arn": {
+                    "PrimitiveType": "String"
+                  },
+                  "DomainName": {
+                    "PrimitiveType": "String"
+                  },
+                  "DualStackDomainName": {
+                    "PrimitiveType": "String"
+                  },
+                  "RegionalDomainName": {
+                    "PrimitiveType": "String"
+                  },
+                  "WebsiteURL": {
+                    "PrimitiveType": "String"
+                  }
+                },
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html",
+                "Properties": {
+                  "AccelerateConfiguration": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html#cfn-s3-bucket-accelerateconfiguration",
+                    "Required": false,
+                    "Type": "AccelerateConfiguration",
+                    "UpdateType": "Mutable"
+                  },
+                  "AccessControl": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html#cfn-s3-bucket-accesscontrol",
+                    "PrimitiveType": "String",
+                    "Required": false,
+                    "UpdateType": "Mutable"
+                  },
+                  "AnalyticsConfigurations": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html#cfn-s3-bucket-analyticsconfigurations",
+                    "DuplicatesAllowed": false,
+                    "ItemType": "AnalyticsConfiguration",
+                    "Required": false,
+                    "Type": "List",
+                    "UpdateType": "Mutable"
+                  },
+                  "BucketEncryption": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html#cfn-s3-bucket-bucketencryption",
+                    "Required": false,
+                    "Type": "BucketEncryption",
+                    "UpdateType": "Mutable"
+                  },
+                  "BucketName": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html#cfn-s3-bucket-name",
+                    "PrimitiveType": "String",
+                    "Required": false,
+                    "UpdateType": "Immutable"
+                  },
+                  "CorsConfiguration": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html#cfn-s3-bucket-crossoriginconfig",
+                    "Required": false,
+                    "Type": "CorsConfiguration",
+                    "UpdateType": "Mutable"
+                  },
+                  "IntelligentTieringConfigurations": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html#cfn-s3-bucket-intelligenttieringconfigurations",
+                    "DuplicatesAllowed": false,
+                    "ItemType": "IntelligentTieringConfiguration",
+                    "Required": false,
+                    "Type": "List",
+                    "UpdateType": "Mutable"
+                  },
+                  "InventoryConfigurations": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html#cfn-s3-bucket-inventoryconfigurations",
+                    "DuplicatesAllowed": false,
+                    "ItemType": "InventoryConfiguration",
+                    "Required": false,
+                    "Type": "List",
+                    "UpdateType": "Mutable"
+                  },
+                  "LifecycleConfiguration": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html#cfn-s3-bucket-lifecycleconfig",
+                    "Required": false,
+                    "Type": "LifecycleConfiguration",
+                    "UpdateType": "Mutable"
+                  },
+                  "LoggingConfiguration": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html#cfn-s3-bucket-loggingconfig",
+                    "Required": false,
+                    "Type": "LoggingConfiguration",
+                    "UpdateType": "Mutable"
+                  },
+                  "MetricsConfigurations": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html#cfn-s3-bucket-metricsconfigurations",
+                    "DuplicatesAllowed": false,
+                    "ItemType": "MetricsConfiguration",
+                    "Required": false,
+                    "Type": "List",
+                    "UpdateType": "Mutable"
+                  },
+                  "NotificationConfiguration": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html#cfn-s3-bucket-notification",
+                    "Required": false,
+                    "Type": "NotificationConfiguration",
+                    "UpdateType": "Mutable"
+                  },
+                  "ObjectLockConfiguration": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html#cfn-s3-bucket-objectlockconfiguration",
+                    "Required": false,
+                    "Type": "ObjectLockConfiguration",
+                    "UpdateType": "Mutable"
+                  },
+                  "ObjectLockEnabled": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html#cfn-s3-bucket-objectlockenabled",
+                    "PrimitiveType": "Boolean",
+                    "Required": false,
+                    "UpdateType": "Immutable"
+                  },
+                  "OwnershipControls": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html#cfn-s3-bucket-ownershipcontrols",
+                    "Required": false,
+                    "Type": "OwnershipControls",
+                    "UpdateType": "Mutable"
+                  },
+                  "PublicAccessBlockConfiguration": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html#cfn-s3-bucket-publicaccessblockconfiguration",
+                    "Required": false,
+                    "Type": "PublicAccessBlockConfiguration",
+                    "UpdateType": "Mutable"
+                  },
+                  "ReplicationConfiguration": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html#cfn-s3-bucket-replicationconfiguration",
+                    "Required": false,
+                    "Type": "ReplicationConfiguration",
+                    "UpdateType": "Mutable"
+                  },
+                  "Tags": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html#cfn-s3-bucket-tags",
+                    "DuplicatesAllowed": true,
+                    "ItemType": "Tag",
+                    "Required": false,
+                    "Type": "List",
+                    "UpdateType": "Mutable"
+                  },
+                  "VersioningConfiguration": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html#cfn-s3-bucket-versioning",
+                    "Required": false,
+                    "Type": "VersioningConfiguration",
+                    "UpdateType": "Mutable"
+                  },
+                  "WebsiteConfiguration": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html#cfn-s3-bucket-websiteconfiguration",
+                    "Required": false,
+                    "Type": "WebsiteConfiguration",
+                    "UpdateType": "Mutable"
+                  }
+                }
+              },
+              "BucketPolicy": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html",
+                "Properties": {
+                  "Bucket": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html#aws-properties-s3-policy-bucket",
+                    "PrimitiveType": "String",
+                    "Required": true,
+                    "UpdateType": "Immutable"
+                  },
+                  "PolicyDocument": {
+                    "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html#aws-properties-s3-policy-policydocument",
+                    "PrimitiveType": "Json",
+                    "Required": true,
+                    "UpdateType": "Mutable"
+                  }
+                }
+              },
+
+        }]
+    }
+]
