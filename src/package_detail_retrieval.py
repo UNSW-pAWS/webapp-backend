@@ -254,7 +254,7 @@ def npm_dependecies_search(package_list, level, results):
 		# loop through the levels
 		for frontier in explore_frontiers:
 			# # store this frontiers dependency
-			# frontier_dependency = []
+			frontier_dependency = []
 			# if in results the frontier had been explored no visiting again
 			if frontier in results:
 				continue
@@ -282,12 +282,13 @@ def npm_dependecies_search(package_list, level, results):
 			# collect dependencies keys which will be the pack name
 			for dependecy in dependencies:
 				new_explore_frontiers.append(dependecy)
+				frontier_dependency.append(dependecy)
 				# !!! UNCOMMENT BELOW IF VERSION NUMBER NEEDED !!!
 				# package_name, package_version = get_viable_npm_version(dependecy,dependencies[dependecy])
 				# frontier_dependency.append(package_name+"=="+package_version)
 				# new_explore_frontiers.append(package_name+"=="+package_version)
 			# store the dependencies in the dictionary
-			results[frontier] = 1
+			results[frontier] = frontier_dependency
 		# update the next level
 		explore_frontiers = new_explore_frontiers
 		# level explored increased
