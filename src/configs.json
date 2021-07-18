@@ -1,370 +1,288 @@
-[
+{"Resources": [
   {
-    "EC2": [{
-      "Instance": {
-        "HibernationOptions": {
-          "Documentation": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-hibernationoptions.html",
-          "Properties": [
-            {
-              "Configured": {
-                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-hibernationoptions.html#cfn-ec2-instance-hibernationoptions-configured",
-                "Description": "If you set this parameter to true, your instance is enabled for hibernation.",
+    "EC2": [
+        {
+        "Instance": {
+          "HibernationOptions": {
+            "Documentation": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-hibernationoptions.html",
+            "Properties": [
+              {
+                "Configured": {
+                  "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-hibernationoptions.html#cfn-ec2-instance-hibernationoptions-configured",
+                  "Description": "If you set this parameter to true, your instance is enabled for hibernation.",
+                  "PrimitiveType": "Boolean",
+                  "Required": false,
+                  "UpdateType": "Mutable",
+                  "Default": false
+                }
+              }
+            ]
+          },
+          "Ebs": {
+            "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-template.html",
+            "Properties": {
+              "DeleteOnTermination": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-template.html#cfn-ec2-blockdev-template-deleteontermination",
                 "PrimitiveType": "Boolean",
                 "Required": false,
-                "UpdateType": "Mutable",
-                "Default": false
+                "UpdateType": "Mutable"
+              },
+              "Encrypted": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-template.html#cfn-ec2-blockdev-template-encrypted",
+                "PrimitiveType": "Boolean",
+                "Required": false,
+                "UpdateType": "Mutable"
+              },
+              "Iops": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-template.html#cfn-ec2-blockdev-template-iops",
+                "PrimitiveType": "Integer",
+                "Required": false,
+                "UpdateType": "Mutable"
+              },
+              "KmsKeyId": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-template.html#cfn-ec2-instance-ebs-kmskeyid",
+                "PrimitiveType": "String",
+                "Required": false,
+                "UpdateType": "Immutable"
+              },
+              "SnapshotId": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-template.html#cfn-ec2-blockdev-template-snapshotid",
+                "PrimitiveType": "String",
+                "Required": false,
+                "UpdateType": "Mutable"
+              },
+              "VolumeSize": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-template.html#cfn-ec2-blockdev-template-volumesize",
+                "PrimitiveType": "Integer",
+                "Required": false,
+                "UpdateType": "Mutable"
+              },
+              "VolumeType": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-template.html#cfn-ec2-blockdev-template-volumetype",
+                "PrimitiveType": "String",
+                "Required": false,
+                "UpdateType": "Mutable"
               }
             }
-          ]
-        },
-        "Ebs": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-template.html",
-          "Properties": {
-            "DeleteOnTermination": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-template.html#cfn-ec2-blockdev-template-deleteontermination",
-              "PrimitiveType": "Boolean",
-              "Required": false,
-              "UpdateType": "Mutable"
-            },
-            "Encrypted": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-template.html#cfn-ec2-blockdev-template-encrypted",
-              "PrimitiveType": "Boolean",
-              "Required": false,
-              "UpdateType": "Mutable"
-            },
-            "Iops": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-template.html#cfn-ec2-blockdev-template-iops",
-              "PrimitiveType": "Integer",
-              "Required": false,
-              "UpdateType": "Mutable"
-            },
-            "KmsKeyId": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-template.html#cfn-ec2-instance-ebs-kmskeyid",
-              "PrimitiveType": "String",
-              "Required": false,
-              "UpdateType": "Immutable"
-            },
-            "SnapshotId": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-template.html#cfn-ec2-blockdev-template-snapshotid",
-              "PrimitiveType": "String",
-              "Required": false,
-              "UpdateType": "Mutable"
-            },
-            "VolumeSize": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-template.html#cfn-ec2-blockdev-template-volumesize",
-              "PrimitiveType": "Integer",
-              "Required": false,
-              "UpdateType": "Mutable"
-            },
-            "VolumeType": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-template.html#cfn-ec2-blockdev-template-volumetype",
-              "PrimitiveType": "String",
-              "Required": false,
-              "UpdateType": "Mutable"
+          },
+          "NoDevice": {
+            "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-nodevice.html",
+            "Properties": {}
+          },
+          "LaunchTemplateSpecification": {
+            "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-launchtemplatespecification.html",
+            "Properties": {
+              "LaunchTemplateId": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-launchtemplatespecification.html#cfn-ec2-instance-launchtemplatespecification-launchtemplateid",
+                "PrimitiveType": "String",
+                "Required": false,
+                "UpdateType": "Mutable"
+              },
+              "LaunchTemplateName": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-launchtemplatespecification.html#cfn-ec2-instance-launchtemplatespecification-launchtemplatename",
+                "PrimitiveType": "String",
+                "Required": false,
+                "UpdateType": "Mutable"
+              },
+              "Version": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-launchtemplatespecification.html#cfn-ec2-instance-launchtemplatespecification-version",
+                "PrimitiveType": "String",
+                "Required": true,
+                "UpdateType": "Mutable"
+              }
             }
-          }
-        },
-        "NoDevice": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-nodevice.html",
-          "Properties": {}
-        },
-        "CreditSpecification": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-creditspecification.html",
-          "Properties": {
-            "CPUCredits": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-creditspecification.html#cfn-ec2-instance-creditspecification-cpucredits",
-              "PrimitiveType": "String",
-              "Required": false,
-              "UpdateType": "Mutable"
+          },
+          "BlockDeviceMapping": {
+            "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-mapping.html",
+            "Properties": {
+              "DeviceName": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-mapping.html#cfn-ec2-blockdev-mapping-devicename",
+                "PrimitiveType": "String",
+                "Required": true,
+                "UpdateType": "Mutable"
+              },
+              "Ebs": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-mapping.html#cfn-ec2-blockdev-mapping-ebs",
+                "Required": false,
+                "Type": "Ebs",
+                "UpdateType": "Mutable"
+              },
+              "NoDevice": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-mapping.html#cfn-ec2-blockdev-mapping-nodevice",
+                "Required": false,
+                "Type": "NoDevice",
+                "UpdateType": "Mutable"
+              },
+              "VirtualName": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-mapping.html#cfn-ec2-blockdev-mapping-virtualname",
+                "PrimitiveType": "String",
+                "Required": false,
+                "UpdateType": "Mutable"
+              }
             }
-          }
-        },
-        "ElasticGPUSpecification": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-elasticgpuspecification.html",
-          "Properties": {
-            "Type": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-elasticgpuspecification.html#cfn-ec2-instance-elasticgpuspecification-type",
-              "PrimitiveType": "String",
-              "Required": true,
-              "UpdateType": "Mutable"
+          },
+          "PrivateIpAddressSpecification": {
+            "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-interface-privateipspec.html",
+            "Properties": {
+              "Primary": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-interface-privateipspec.html#cfn-ec2-networkinterface-privateipspecification-primary",
+                "PrimitiveType": "Boolean",
+                "Required": true,
+                "UpdateType": "Mutable"
+              },
+              "PrivateIpAddress": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-interface-privateipspec.html#cfn-ec2-networkinterface-privateipspecification-privateipaddress",
+                "PrimitiveType": "String",
+                "Required": true,
+                "UpdateType": "Mutable"
+              }
             }
-          }
-        },
-        "CpuOptions": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-cpuoptions.html",
-          "Properties": {
-            "CoreCount": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-cpuoptions.html#cfn-ec2-instance-cpuoptions-corecount",
-              "PrimitiveType": "Integer",
-              "Required": false,
-              "UpdateType": "Mutable"
-            },
-            "ThreadsPerCore": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-cpuoptions.html#cfn-ec2-instance-cpuoptions-threadspercore",
-              "PrimitiveType": "Integer",
-              "Required": false,
-              "UpdateType": "Mutable"
+          },
+          "NetworkInterface": {
+            "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html",
+            "Properties": {
+              "AssociatePublicIpAddress": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#aws-properties-ec2-network-iface-embedded-associatepubip",
+                "PrimitiveType": "Boolean",
+                "Required": false,
+                "UpdateType": "Mutable"
+              },
+              "DeleteOnTermination": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#aws-properties-ec2-network-iface-embedded-delete",
+                "PrimitiveType": "Boolean",
+                "Required": false,
+                "UpdateType": "Mutable"
+              },
+              "Description": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#aws-properties-ec2-network-iface-embedded-description",
+                "PrimitiveType": "String",
+                "Required": false,
+                "UpdateType": "Mutable"
+              },
+              "DeviceIndex": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#aws-properties-ec2-network-iface-embedded-deviceindex",
+                "PrimitiveType": "String",
+                "Required": true,
+                "UpdateType": "Mutable"
+              },
+              "GroupSet": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#aws-properties-ec2-network-iface-embedded-groupset",
+                "DuplicatesAllowed": true,
+                "PrimitiveItemType": "String",
+                "Required": false,
+                "Type": "List",
+                "UpdateType": "Mutable"
+              },
+              "Ipv6AddressCount": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#cfn-ec2-instance-networkinterface-ipv6addresscount",
+                "PrimitiveType": "Integer",
+                "Required": false,
+                "UpdateType": "Mutable"
+              },
+              "Ipv6Addresses": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#cfn-ec2-instance-networkinterface-ipv6addresses",
+                "DuplicatesAllowed": true,
+                "ItemType": "InstanceIpv6Address",
+                "Required": false,
+                "Type": "List",
+                "UpdateType": "Mutable"
+              },
+              "NetworkInterfaceId": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#aws-properties-ec2-network-iface-embedded-network-iface",
+                "PrimitiveType": "String",
+                "Required": false,
+                "UpdateType": "Mutable"
+              },
+              "PrivateIpAddress": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#aws-properties-ec2-network-iface-embedded-privateipaddress",
+                "PrimitiveType": "String",
+                "Required": false,
+                "UpdateType": "Mutable"
+              },
+              "PrivateIpAddresses": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#aws-properties-ec2-network-iface-embedded-privateipaddresses",
+                "DuplicatesAllowed": true,
+                "ItemType": "PrivateIpAddressSpecification",
+                "Required": false,
+                "Type": "List",
+                "UpdateType": "Mutable"
+              },
+              "SecondaryPrivateIpAddressCount": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#aws-properties-ec2-network-iface-embedded-secondprivateip",
+                "PrimitiveType": "Integer",
+                "Required": false,
+                "UpdateType": "Mutable"
+              },
+              "SubnetId": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#aws-properties-ec2-network-iface-embedded-subnetid",
+                "PrimitiveType": "String",
+                "Required": false,
+                "UpdateType": "Mutable"
+              }
             }
-          }
-        },
-        "LaunchTemplateSpecification": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-launchtemplatespecification.html",
-          "Properties": {
-            "LaunchTemplateId": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-launchtemplatespecification.html#cfn-ec2-instance-launchtemplatespecification-launchtemplateid",
-              "PrimitiveType": "String",
-              "Required": false,
-              "UpdateType": "Mutable"
-            },
-            "LaunchTemplateName": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-launchtemplatespecification.html#cfn-ec2-instance-launchtemplatespecification-launchtemplatename",
-              "PrimitiveType": "String",
-              "Required": false,
-              "UpdateType": "Mutable"
-            },
-            "Version": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-launchtemplatespecification.html#cfn-ec2-instance-launchtemplatespecification-version",
-              "PrimitiveType": "String",
-              "Required": true,
-              "UpdateType": "Mutable"
+          },
+          "InstanceIpv6Address": {
+            "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-instanceipv6address.html",
+            "Properties": {
+              "Ipv6Address": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-instanceipv6address.html#cfn-ec2-instance-instanceipv6address-ipv6address",
+                "PrimitiveType": "String",
+                "Required": true,
+                "UpdateType": "Mutable"
+              }
             }
-          }
-        },
-        "BlockDeviceMapping": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-mapping.html",
-          "Properties": {
-            "DeviceName": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-mapping.html#cfn-ec2-blockdev-mapping-devicename",
-              "PrimitiveType": "String",
-              "Required": true,
-              "UpdateType": "Mutable"
-            },
-            "Ebs": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-mapping.html#cfn-ec2-blockdev-mapping-ebs",
-              "Required": false,
-              "Type": "Ebs",
-              "UpdateType": "Mutable"
-            },
-            "NoDevice": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-mapping.html#cfn-ec2-blockdev-mapping-nodevice",
-              "Required": false,
-              "Type": "NoDevice",
-              "UpdateType": "Mutable"
-            },
-            "VirtualName": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-mapping.html#cfn-ec2-blockdev-mapping-virtualname",
-              "PrimitiveType": "String",
-              "Required": false,
-              "UpdateType": "Mutable"
+          },
+          "AssociationParameter": {
+            "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-ssmassociations-associationparameters.html",
+            "Properties": {
+              "Key": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-ssmassociations-associationparameters.html#cfn-ec2-instance-ssmassociations-associationparameters-key",
+                "PrimitiveType": "String",
+                "Required": true,
+                "UpdateType": "Mutable"
+              },
+              "Value": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-ssmassociations-associationparameters.html#cfn-ec2-instance-ssmassociations-associationparameters-value",
+                "DuplicatesAllowed": true,
+                "PrimitiveItemType": "String",
+                "Required": true,
+                "Type": "List",
+                "UpdateType": "Mutable"
+              }
             }
-          }
-        },
-        "PrivateIpAddressSpecification": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-interface-privateipspec.html",
-          "Properties": {
-            "Primary": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-interface-privateipspec.html#cfn-ec2-networkinterface-privateipspecification-primary",
-              "PrimitiveType": "Boolean",
-              "Required": true,
-              "UpdateType": "Mutable"
-            },
-            "PrivateIpAddress": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-interface-privateipspec.html#cfn-ec2-networkinterface-privateipspecification-privateipaddress",
-              "PrimitiveType": "String",
-              "Required": true,
-              "UpdateType": "Mutable"
+          },
+          "LicenseSpecification": {
+            "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-licensespecification.html",
+            "Properties": {
+              "LicenseConfigurationArn": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-licensespecification.html#cfn-ec2-instance-licensespecification-licenseconfigurationarn",
+                "PrimitiveType": "String",
+                "Required": true,
+                "UpdateType": "Mutable"
+              }
             }
-          }
-        },
-        "Volume": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-mount-point.html",
-          "Properties": {
-            "Device": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-mount-point.html#cfn-ec2-mountpoint-device",
-              "PrimitiveType": "String",
-              "Required": true,
-              "UpdateType": "Mutable"
-            },
-            "VolumeId": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-mount-point.html#cfn-ec2-mountpoint-volumeid",
-              "PrimitiveType": "String",
-              "Required": true,
-              "UpdateType": "Mutable"
-            }
-          }
-        },
-        "NetworkInterface": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html",
-          "Properties": {
-            "AssociatePublicIpAddress": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#aws-properties-ec2-network-iface-embedded-associatepubip",
-              "PrimitiveType": "Boolean",
-              "Required": false,
-              "UpdateType": "Mutable"
-            },
-            "DeleteOnTermination": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#aws-properties-ec2-network-iface-embedded-delete",
-              "PrimitiveType": "Boolean",
-              "Required": false,
-              "UpdateType": "Mutable"
-            },
-            "Description": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#aws-properties-ec2-network-iface-embedded-description",
-              "PrimitiveType": "String",
-              "Required": false,
-              "UpdateType": "Mutable"
-            },
-            "DeviceIndex": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#aws-properties-ec2-network-iface-embedded-deviceindex",
-              "PrimitiveType": "String",
-              "Required": true,
-              "UpdateType": "Mutable"
-            },
-            "GroupSet": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#aws-properties-ec2-network-iface-embedded-groupset",
-              "DuplicatesAllowed": true,
-              "PrimitiveItemType": "String",
-              "Required": false,
-              "Type": "List",
-              "UpdateType": "Mutable"
-            },
-            "Ipv6AddressCount": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#cfn-ec2-instance-networkinterface-ipv6addresscount",
-              "PrimitiveType": "Integer",
-              "Required": false,
-              "UpdateType": "Mutable"
-            },
-            "Ipv6Addresses": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#cfn-ec2-instance-networkinterface-ipv6addresses",
-              "DuplicatesAllowed": true,
-              "ItemType": "InstanceIpv6Address",
-              "Required": false,
-              "Type": "List",
-              "UpdateType": "Mutable"
-            },
-            "NetworkInterfaceId": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#aws-properties-ec2-network-iface-embedded-network-iface",
-              "PrimitiveType": "String",
-              "Required": false,
-              "UpdateType": "Mutable"
-            },
-            "PrivateIpAddress": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#aws-properties-ec2-network-iface-embedded-privateipaddress",
-              "PrimitiveType": "String",
-              "Required": false,
-              "UpdateType": "Mutable"
-            },
-            "PrivateIpAddresses": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#aws-properties-ec2-network-iface-embedded-privateipaddresses",
-              "DuplicatesAllowed": true,
-              "ItemType": "PrivateIpAddressSpecification",
-              "Required": false,
-              "Type": "List",
-              "UpdateType": "Mutable"
-            },
-            "SecondaryPrivateIpAddressCount": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#aws-properties-ec2-network-iface-embedded-secondprivateip",
-              "PrimitiveType": "Integer",
-              "Required": false,
-              "UpdateType": "Mutable"
-            },
-            "SubnetId": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html#aws-properties-ec2-network-iface-embedded-subnetid",
-              "PrimitiveType": "String",
-              "Required": false,
-              "UpdateType": "Mutable"
-            }
-          }
-        },
-        "InstanceIpv6Address": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-instanceipv6address.html",
-          "Properties": {
-            "Ipv6Address": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-instanceipv6address.html#cfn-ec2-instance-instanceipv6address-ipv6address",
-              "PrimitiveType": "String",
-              "Required": true,
-              "UpdateType": "Mutable"
-            }
-          }
-        },
-        "AssociationParameter": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-ssmassociations-associationparameters.html",
-          "Properties": {
-            "Key": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-ssmassociations-associationparameters.html#cfn-ec2-instance-ssmassociations-associationparameters-key",
-              "PrimitiveType": "String",
-              "Required": true,
-              "UpdateType": "Mutable"
-            },
-            "Value": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-ssmassociations-associationparameters.html#cfn-ec2-instance-ssmassociations-associationparameters-value",
-              "DuplicatesAllowed": true,
-              "PrimitiveItemType": "String",
-              "Required": true,
-              "Type": "List",
-              "UpdateType": "Mutable"
-            }
-          }
-        },
-        "EnclaveOptions": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-enclaveoptions.html",
-          "Properties": {
-            "Enabled": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-enclaveoptions.html#cfn-ec2-instance-enclaveoptions-enabled",
-              "PrimitiveType": "Boolean",
-              "Required": false,
-              "UpdateType": "Mutable"
-            }
-          }
-        },
-        "LicenseSpecification": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-licensespecification.html",
-          "Properties": {
-            "LicenseConfigurationArn": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-licensespecification.html#cfn-ec2-instance-licensespecification-licenseconfigurationarn",
-              "PrimitiveType": "String",
-              "Required": true,
-              "UpdateType": "Mutable"
-            }
-          }
-        },
-        "SsmAssociation": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-ssmassociations.html",
-          "Properties": {
-            "AssociationParameters": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-ssmassociations.html#cfn-ec2-instance-ssmassociations-associationparameters",
-              "DuplicatesAllowed": true,
-              "ItemType": "AssociationParameter",
-              "Required": false,
-              "Type": "List",
-              "UpdateType": "Mutable"
-            },
-            "DocumentName": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-ssmassociations.html#cfn-ec2-instance-ssmassociations-documentname",
-              "PrimitiveType": "String",
-              "Required": true,
-              "UpdateType": "Mutable"
-            }
-          }
-        },
-        "ElasticInferenceAccelerator": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-elasticinferenceaccelerator.html",
-          "Properties": {
-            "Count": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-elasticinferenceaccelerator.html#cfn-ec2-instance-elasticinferenceaccelerator-count",
-              "PrimitiveType": "Integer",
-              "Required": false,
-              "UpdateType": "Mutable"
-            },
-            "Type": {
-              "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-elasticinferenceaccelerator.html#cfn-ec2-instance-elasticinferenceaccelerator-type",
-              "PrimitiveType": "String",
-              "Required": true,
-              "UpdateType": "Mutable"
+          },
+          "SsmAssociation": {
+            "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-ssmassociations.html",
+            "Properties": {
+              "AssociationParameters": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-ssmassociations.html#cfn-ec2-instance-ssmassociations-associationparameters",
+                "DuplicatesAllowed": true,
+                "ItemType": "AssociationParameter",
+                "Required": false,
+                "Type": "List",
+                "UpdateType": "Mutable"
+              },
+              "DocumentName": {
+                "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-ssmassociations.html#cfn-ec2-instance-ssmassociations-documentname",
+                "PrimitiveType": "String",
+                "Required": true,
+                "UpdateType": "Mutable"
+              }
             }
           }
         }
       }
-    }]
+    ]
   }
-]
+]}
