@@ -54,23 +54,20 @@ def extract_relevant_data(search_word, severity=None, date=None):
 
     return result_list
 
-# test = extract_relevant_data("react", ["CRITICAL"], "2021-01-01")
-# print(test)
-# print("hi")
+# root_packages = {"react", "node"}
+# my_output = {"react" : ["react-dependency1", "react-dependency2"], "node": ["node-dependency2"], 
+#                 "react-dependency1": [] , "react-dependency2": [] , "node-dependency2": [] }
+# your_output ={"react": [], "node": [{"node vulnerbilities": "bef", "xyz": "bb"}, {"x": "y"}], "react-dependency1": [{"react1 vulnerbilities" : "bjef"}], "react-dependency2": [{"react2 vulnerbilities" : "ibnief"}], "node-dependency2" : []}
 
-
-root_packages = {"react", "node"}
-my_output = {"react" : ["react-dependency1", "react-dependency2"], "node": ["node-dependency2"], 
-                "react-dependency1": [] , "react-dependency2": [] , "node-dependency2": [] }
-your_output ={"react": {}, "node": {"node vulnerbilities": "bef"}, "react-dependency1": {"react1 vulnerbilities" : "bjef"}, "react-dependency2": {"react2 vulnerbilities" : "ibnief"}, "node-dependency2" : {}}
-
-def new_function(root_package, my_output, your_output):
+def new_function(root_package, my_output, your_output, level, max_level):
     resulting_dic = {}
+    if level == max_level+1:
+        return resulting_dic
     for i in root_package:
         resulting_dic[i] = [{},your_output[i]]
         dependencies = my_output[i]
         for dependency in dependencies:
-            resulting_dic[i][0].update(new_function({dependency}, my_output, your_output))
+            resulting_dic[i][0].update(new_function({dependency}, my_output, your_output, level+1, max_level))
     return resulting_dic
 
 # print(new_function(root_packages, my_output, your_output))
@@ -78,6 +75,7 @@ def new_function(root_package, my_output, your_output):
 # print(package_detail_retrieval("npm", ["react", "node"], level=1))
 
 package_list = ["react", "node"]
-package_ouput = {'react': ['loose-envify', 'object-assign'], 'node': ['node-bin-setup'], 'loose-envify': ['js-tokens'], 'object-assign': [], 'node-bin-setup': []}
-
-print(package_list_data(package_ouput, ["CRITICAL"], "2021-01-01"))
+package_output = {'react': ['loose-envify', 'object-assign'], 'node': ['node-bin-setup'], 'loose-envify': ['js-tokens'], 'object-assign': [], 'node-bin-setup': []}
+steven_output = package_list_data(package_output, ["CRITICAL"], "2021-01-01")
+# print(steven_output)
+print(new_function(package_list, package_output, steven_output, 0, 1))
