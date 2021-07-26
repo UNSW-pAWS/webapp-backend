@@ -7,9 +7,9 @@
 		  		"Handler": "index.handler",
 		  		"Role": { "Fn::GetAtt" : ["LambdaExecutionRole", "Arn"] },
 		  		"Code": {
-					"ZipFile":  "function handler(event, context) { return \"Hello world!\" }"
+					"ZipFile":  "exports.handler = async function(event, context) { return \"Hello world!\" }"
 		  		},
-		  		"Runtime": "nodejs"
+		  		"Runtime": "nodejs12.x"
 			}
 	  	},
 	  	"LambdaExecutionRole": {
@@ -51,12 +51,13 @@
 				]
 			}
 		},
-		"LambdaPermission-InvokeFunction": {
+		"LambdaPermissionInvokeFunction": {
 			"Type": "AWS::Lambda::Permission",
 			"Properties": {
 				"Action": "lambda:InvokeFunction",
 				"Principal": "*",
-				"FunctionName": "MyFunction"
+				"FunctionName": {
+					"Fn::GetAtt": [ "MyFunction", "Arn" ] }
 			}
 		}
 	}
