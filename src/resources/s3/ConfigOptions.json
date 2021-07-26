@@ -1,0 +1,75 @@
+{
+	"AWS::S3::Bucket": {
+		"properties": [
+            {
+                "propertyId": "BucketName",
+                "type": "free-text",
+                "default": "MyBucket",
+                "pattern": "\\S"
+            },
+            {
+                "propertyId": "AccessControl",
+                "type": "dropdown",
+                "default": "Private",
+                "values": [
+                    "Private",
+                    "PublicRead",
+                    "PublicReadWrite",
+                    "AuthenticatedRead",
+                    "LogDeliveryWrite",
+                    "BucketOwnerRead",
+                    "BucketOwnerFullControl",
+                    "AwsExecRead"
+                ],
+                "managedRules": [
+                    "S3_BUCKET_LEVEL_PUBLIC_ACCESS_PROHIBITED",
+                    "S3_BUCKET_PUBLIC_READ_PROHIBITED",
+                    "S3_BUCKET_PUBLIC_WRITE_PROHIBITED"
+                ]
+            },
+            {
+                "propertyId": "PublicAccessBlockConfiguration",
+                "type": "json",
+                "default": "{ \"BlockPublicAcls\": true, \"BlockPublicPolicy\": true, \"IgnorePublicAcls\": true, \"RestrictPublicBuckets\": true }",
+                "managedRules": [
+                    "S3_ACCOUNT_LEVEL_PUBLIC_ACCESS_BLOCKS_PERIODIC",
+                    "S3_BUCKET_PUBLIC_READ_PROHIBITED",
+                    "S3_BUCKET_PUBLIC_WRITE_PROHIBITED"
+                ]
+            },
+			{
+				"propertyId": "LoggingConfiguration",
+				"type": "json",
+                "default": "{ \"DestinationBucketName\": \"LogBucket\", \"LogFilePrefix\": \"/logs/\" }",
+                "managedRules": [
+                    "S3_BUCKET_LOGGING_ENABLED"
+                ]
+			},
+            {
+                "propertyId": "BucketEncryption",
+                "type": "json",
+                "default": "\"ServerSideEncryptionConfiguration\": [{\"ServerSideEncryptionByDefault\": {\"SSEAlgorithm\": \"aws:kms\", \"KMSMasterKeyID\": \"KMS-KEY-ARN\"}}]",
+                "managedRules": [
+                    "S3_BUCKET_SERVER_SIDE_ENCRYPTION_ENABLED",
+                    "S3_DEFAULT_ENCRYPTION_KMS"
+                ]
+            }
+		],
+        "multiple": false,
+        "required": true
+	},
+    "AWS::S3::BucketPolicy": {
+		"properties": [
+			{
+				"propertyId": "PolicyDocument",
+				"type": "json",
+				"default": "\"Statement\": [{\"Sid\": \"AllowSSLRequestsOnly\",\"Action\": \"s3:*\",\"Effect\": \"Deny\",\"Resource\": [\"arn:aws:s3:::MyBucket/*\"], \"Condition\": {\"Bool\": {\"aws:SecureTransport\":\"false\"}}, \"Principal\": \"*\"}]",
+                "managedRules": [
+                    "S3_BUCKET_SSL_REQUESTS_ONLY"
+                ]
+			}
+		],
+        "multiple": true,
+        "required": false
+	}
+}
