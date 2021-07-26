@@ -4,8 +4,7 @@
 			{
 				"propertyId": "Timeout",
 				"type": "integer",
-				"default": 300,
-				"value": 120
+				"default": 300
 			},
 			{
 				"propertyId": "FunctionName",
