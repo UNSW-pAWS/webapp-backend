@@ -1,10 +1,9 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
     "Resources": {
-        "MyBucket": {
+        "S3Bucket": {
             "Type": "AWS::S3::Bucket",
             "Properties": {
-                "BucketName": "MyBucket",
                 "AccessControl": "Private",
                 "PublicAccessBlockConfiguration": {
                     "BlockPublicAcls": true,
@@ -13,15 +12,16 @@
                     "RestrictPublicBuckets": true
                 },
                 "LoggingConfiguration": {
-                    "DestinationBucketName": "LogBucket",
+                    "DestinationBucketName": {
+                        "Ref": "LogBucket"
+                    },
                     "LogFilePrefix": "/logs/"
                 },
                 "BucketEncryption": {
                     "ServerSideEncryptionConfiguration": [
                         {
                             "ServerSideEncryptionByDefault": {
-                                "SSEAlgorithm": "aws:kms",
-                                "KMSMasterKeyID": "KMS-KEY-ARN"
+                                "SSEAlgorithm": "aws:kms"
                             }
                         }
                     ]
@@ -31,13 +31,21 @@
         "LogBucket": {
             "Type": "AWS::S3::Bucket",
             "Properties": {
-                "BucketName": "LogBucket",
-                "AccessControl": "LogDeliveryWrite"
+                "AccessControl": "LogDeliveryWrite",
+                "PublicAccessBlockConfiguration": {
+                    "BlockPublicAcls": true,
+                    "BlockPublicPolicy": true,
+                    "IgnorePublicAcls": true,
+                    "RestrictPublicBuckets": true
+                }
             }
         },
         "BucketPolicy": {
             "Type": "AWS::S3::BucketPolicy",
             "Properties": {
+                "Bucket": {
+                    "Ref": "S3Bucket"
+                },
                 "PolicyDocument": {
                     "Id": "BucketPolicy",
                     "Version": "2012-10-17",
@@ -47,18 +55,31 @@
                             "Effect": "Deny",
                             "Principal": "*",
                             "Action": "s3:*",
-                            "Resource": {
-                                "Fn::Join": [
-                                    "",
-                                    [
-                                        "arn:aws:s3:::",
-                                        {
-                                            "Ref": "MyBucket"
-                                        },
-                                        "/*"
+                            "Resource": [
+                                {
+                                    "Fn::Join": [
+                                        "",
+                                        [
+                                            "arn:aws:s3:::",
+                                            {
+                                                "Ref": "S3Bucket"
+                                            }
+                                        ]
                                     ]
-                                ]
-                            },
+                                },
+                                {
+                                    "Fn::Join": [
+                                        "",
+                                        [
+                                            "arn:aws:s3:::",
+                                            {
+                                                "Ref": "S3Bucket"
+                                            },
+                                            "/*"
+                                        ]
+                                    ]
+                                }
+                            ],
                             "Condition": {
                                 "Bool": {
                                     "aws:SecureTransport": "false"
@@ -66,9 +87,6 @@
                             }
                         }
                     ]
-                },
-                "Bucket": {
-                    "Ref": "MyBucket"
                 }
             }
         }

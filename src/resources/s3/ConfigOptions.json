@@ -2,12 +2,6 @@
 	"AWS::S3::Bucket": {
 		"properties": [
             {
-                "propertyId": "BucketName",
-                "type": "free-text",
-                "default": "MyBucket",
-                "pattern": "\\S"
-            },
-            {
                 "propertyId": "AccessControl",
                 "type": "dropdown",
                 "default": "Private",
@@ -40,7 +34,7 @@
 			{
 				"propertyId": "LoggingConfiguration",
 				"type": "json",
-                "default": "{ \"DestinationBucketName\": \"LogBucket\", \"LogFilePrefix\": \"/logs/\" }",
+                "default": "{ \"DestinationBucketName\": { \"Ref\": \"LogBucket\" }, \"LogFilePrefix\": \"/logs/\" }",
                 "managedRules": [
                     "S3_BUCKET_LOGGING_ENABLED"
                 ]
@@ -48,7 +42,7 @@
             {
                 "propertyId": "BucketEncryption",
                 "type": "json",
-                "default": "\"ServerSideEncryptionConfiguration\": [{\"ServerSideEncryptionByDefault\": {\"SSEAlgorithm\": \"aws:kms\", \"KMSMasterKeyID\": \"KMS-KEY-ARN\"}}]",
+                "default": "\"ServerSideEncryptionConfiguration\": [{\"ServerSideEncryptionByDefault\": {\"SSEAlgorithm\": \"aws:kms\"}}]",
                 "managedRules": [
                     "S3_BUCKET_SERVER_SIDE_ENCRYPTION_ENABLED",
                     "S3_DEFAULT_ENCRYPTION_KMS"
@@ -63,7 +57,7 @@
 			{
 				"propertyId": "PolicyDocument",
 				"type": "json",
-				"default": "\"Statement\": [{\"Sid\": \"AllowSSLRequestsOnly\",\"Action\": \"s3:*\",\"Effect\": \"Deny\",\"Resource\": [\"arn:aws:s3:::MyBucket/*\"], \"Condition\": {\"Bool\": {\"aws:SecureTransport\":\"false\"}}, \"Principal\": \"*\"}]",
+				"default": "\"Statement\": [{\"Sid\": \"AllowSSLRequestsOnly\",\"Action\": \"s3:*\",\"Effect\": \"Deny\",\"Resource\": [{ \"Fn::Join\": [ \"\", [\"arn:aws:s3:::\", { \"Ref\": \"S3Bucket\" }]]}, { \"Fn::Join\": [ \"\", [\"arn:aws:s3:::\", { \"Ref\": \"S3Bucket\" }, \"/*\"]]}], \"Condition\": {\"Bool\": {\"aws:SecureTransport\":\"false\"}}, \"Principal\": \"*\"}]",
                 "managedRules": [
                     "S3_BUCKET_SSL_REQUESTS_ONLY"
                 ]
