@@ -1,0 +1,63 @@
+{
+	"AWSTemplateFormatVersion": "2010-09-09",
+	"Resources" : {
+		"MyFunction": {
+			"Type": "AWS::Lambda::Function",
+			"Properties": {
+		  		"Handler": "index.handler",
+		  		"Role": { "Fn::GetAtt" : ["LambdaExecutionRole", "Arn"] },
+		  		"Code": {
+					"ZipFile":  "function handler(event, context) { return \"Hello world!\" }"
+		  		},
+		  		"Runtime": "nodejs"
+			}
+	  	},
+	  	"LambdaExecutionRole": {
+			"Type": "AWS::IAM::Role",
+			"Properties": {
+				"AssumeRolePolicyDocument": {
+					"Version": "2012-10-17",
+					"Statement": [
+						{
+							"Effect": "Allow",
+							"Principal": {
+								"Service": [
+									"lambda.amazonaws.com"
+								]
+							},
+							"Action": [
+								"sts:AssumeRole"
+							]
+						}
+					]
+				},
+				"Path": "/",
+				"Policies": [
+					{
+						"PolicyName": "root",
+						"PolicyDocument": {
+							"Version": "2012-10-17",
+							"Statement": [
+								{
+									"Effect": "Allow",
+									"Action": [
+										"logs:*"
+									],
+									"Resource": "arn:aws:logs:*:*:*"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		"LambdaPermission-InvokeFunction": {
+			"Type": "AWS::Lambda::Permission",
+			"Properties": {
+				"Action": "lambda:InvokeFunction",
+				"Principal": "*",
+				"FunctionName": "MyFunction"
+			}
+		}
+	}
+}
