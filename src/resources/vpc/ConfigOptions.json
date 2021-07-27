@@ -1,0 +1,62 @@
+{
+    "AWS::EC2::VPC": {
+        "properties": [
+            {
+                "propertyId": "CidrBlock",
+                "type": "free-text",
+                "default": "10.0.0.0/16",
+                "pattern": "^[0-9.\/]+$"
+            }
+        ],
+        "multiple": false,
+        "required": true
+    },
+    "AWS::EC2::SecurityGroup": {
+        "properties": [
+            {
+                "propertyId": "GroupDescription",
+                "type": "free-text",
+                "default": "VPC Security Group",
+                "pattern": "^[a-z0-0\\s._-:/()#,@[]+=&;{}!$*]$"
+            },
+            {
+                "propertyId": "SecurityGroupEgress",
+                "type": "json",
+                "default": "[{ \"CidrIp\": \"127.0.0.1/32\", \"IpProtocol\": \"-1\" }]",
+                "managedRules": [
+                    "VPC_DEFAULT_SECURITY_GROUP_CLOSED"
+                ]
+            },
+            {
+                "propertyId": "SecurityGroupIngress",
+                "type": "json",
+                "default": "[{ \"CidrIp\": \"127.0.0.1/32\", \"FromPort\": 443, \"ToPort\": 443, \"IpProtocol\": \"-1\" }]",
+                "managedRules": [
+                    "VPC_DEFAULT_SECURITY_GROUP_CLOSED",
+                    "VPC_SG_OPEN_ONLY_TO_AUTHORIZED_PORTS"
+                ]
+            }
+        ],
+        "multiple": true,
+        "required": true
+    },
+    "AWS::EC2::FlogLog": {
+        "properties": [
+            {
+                "propertyId": "TrafficType",
+                "type": "dropdown",
+                "default": "ALL",
+                "values": [
+                    "ACCEPT",
+                    "ALL",
+                    "REJECT"
+                ],
+                "managedRules": [
+                    "VPC_FLOW_LOGS_ENABLED"
+                ]
+            }
+        ],
+        "multiple": false,
+        "required": false
+    }
+}
