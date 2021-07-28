@@ -1,4 +1,3 @@
-import sys
 from json import dumps
 
 from flask import Flask
@@ -30,4 +29,4 @@ def home():
     return "Hello there!"
 
 if __name__ == "__main__":
-    application.run(debug=True, port=(int(sys.argv[1]) if len(sys.argv) == 2 else 9447))
+    application.run()
