@@ -11,16 +11,19 @@ from package_detail_retrieval import package_detail_retrieval
 #The terms product and CPE are used interchangeably throughout this document.
 #CPE means Common Platform Enumeration, version 2.3, a standard for identifying and searching products. Need to include vulnerability cpes/1.0?addOns=cves
 
-def package_list_data(package_dic, severity=None, date=None):
+def package_list_data(package_dic, severity="None", date="None"):
     all_data = {}
+    if len(package_dic) == 0:
+        return all_data
     for x in package_dic.keys():
         all_data[x] = extract_relevant_data(x, severity, date)
     return all_data
 
-def extract_relevant_data(search_word, severity=None, date=None):
-    
+def extract_relevant_data(search_word, severity="None", date="None"):
+    if search_word == "": return []
+
     search_word = search_word.replace("-", "+")
-    if date is None: 
+    if date == "None": 
         endpoint = "https://services.nvd.nist.gov/rest/json/cves/1.0?keyword=" + f'{search_word}'
     else: 
         endpoint = "https://services.nvd.nist.gov/rest/json/cves/1.0?modStartDate=" + f'{date}' + "T00:00:00:000 UTC-05:00&keyword=" + f'{search_word}'
@@ -49,7 +52,7 @@ def extract_relevant_data(search_word, severity=None, date=None):
             dic['exploitability_score'] = x['impact']['baseMetricV2']['exploitabilityScore']
             dic['impact_score'] = x['impact']['baseMetricV2']['impactScore']
 
-        if severity is None or dic.get("base_severity") in severity: 
+        if severity == "None" or dic.get("base_severity") in severity: 
             result_list.append(dic)
 
     return result_list
@@ -76,11 +79,12 @@ def root_format(root_package, my_output, your_output, level, max_level):
 
 # package_list = ["react", "node"]
 # package_output = {'react': ['loose-envify', 'object-assign'], 'node': ['node-bin-setup'], 'loose-envify': ['js-tokens'], 'object-assign': [], 'node-bin-setup': []}
-# steven_output = package_list_data(package_output, ["CRITICAL"], "2021-01-01")
-# print(steven_output)
-# print(new_function(package_list, package_output, steven_output, 0, 1))
+# steven_output = package_list_data(package_output) #, ["CRITICAL"], "2021-01-01")
+
+# print(root_format(package_list, package_output, steven_output, 0, 1))
 
 # package_dic = package_detail_retrieval("npm", ["react", "node"])
 # output = package_list_data(package_dic, ["CRITICAL"], "2021-01-01")
 # print(root_format(["react", "node"], package_dic, output, 0, 1))
 
+# print(len(package_list_data({"react" : ['loose-envify', 'object-assign']})))
