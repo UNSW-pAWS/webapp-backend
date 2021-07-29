@@ -55,7 +55,7 @@ Each property configuration object should then follow the structure:
     {
         "propertyId": <property-id>,
         "type": <type>,
-        "default": <default-value>,
+        "value": <default-value>,
         "values": [
             <value1>
             .

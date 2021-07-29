@@ -4,7 +4,7 @@
             {
                 "propertyId": "AccessControl",
                 "type": "dropdown",
-                "default": "Private",
+                "value": "Private",
                 "values": [
                     "Private",
                     "PublicRead",
@@ -24,7 +24,7 @@
             {
                 "propertyId": "PublicAccessBlockConfiguration",
                 "type": "json",
-                "default": "{ \"BlockPublicAcls\": true, \"BlockPublicPolicy\": true, \"IgnorePublicAcls\": true, \"RestrictPublicBuckets\": true }",
+                "value": "{ \"BlockPublicAcls\": true, \"BlockPublicPolicy\": true, \"IgnorePublicAcls\": true, \"RestrictPublicBuckets\": true }",
                 "managedRules": [
                     "S3_ACCOUNT_LEVEL_PUBLIC_ACCESS_BLOCKS_PERIODIC",
                     "S3_BUCKET_PUBLIC_READ_PROHIBITED",
@@ -34,7 +34,7 @@
 			{
 				"propertyId": "LoggingConfiguration",
 				"type": "json",
-                "default": "{ \"DestinationBucketName\": { \"Ref\": \"LogBucket\" }, \"LogFilePrefix\": \"/logs/\" }",
+                "value": "{ \"DestinationBucketName\": { \"Ref\": \"LogBucket\" }, \"LogFilePrefix\": \"/logs/\" }",
                 "managedRules": [
                     "S3_BUCKET_LOGGING_ENABLED"
                 ]
@@ -42,7 +42,7 @@
             {
                 "propertyId": "BucketEncryption",
                 "type": "json",
-                "default": "\"ServerSideEncryptionConfiguration\": [{\"ServerSideEncryptionByDefault\": {\"SSEAlgorithm\": \"aws:kms\"}}]",
+                "value": "\"ServerSideEncryptionConfiguration\": [{\"ServerSideEncryptionByDefault\": {\"SSEAlgorithm\": \"aws:kms\"}}]",
                 "managedRules": [
                     "S3_BUCKET_SERVER_SIDE_ENCRYPTION_ENABLED",
                     "S3_DEFAULT_ENCRYPTION_KMS"
@@ -57,7 +57,7 @@
 			{
 				"propertyId": "PolicyDocument",
 				"type": "json",
-				"default": "\"Statement\": [{\"Sid\": \"AllowSSLRequestsOnly\",\"Action\": \"s3:*\",\"Effect\": \"Deny\",\"Resource\": [{ \"Fn::Join\": [ \"\", [\"arn:aws:s3:::\", { \"Ref\": \"S3Bucket\" }]]}, { \"Fn::Join\": [ \"\", [\"arn:aws:s3:::\", { \"Ref\": \"S3Bucket\" }, \"/*\"]]}], \"Condition\": {\"Bool\": {\"aws:SecureTransport\":\"false\"}}, \"Principal\": \"*\"}]",
+				"value": "\"Statement\": [{\"Sid\": \"AllowSSLRequestsOnly\",\"Action\": \"s3:*\",\"Effect\": \"Deny\",\"Resource\": [{ \"Fn::Join\": [ \"\", [\"arn:aws:s3:::\", { \"Ref\": \"S3Bucket\" }]]}, { \"Fn::Join\": [ \"\", [\"arn:aws:s3:::\", { \"Ref\": \"S3Bucket\" }, \"/*\"]]}], \"Condition\": {\"Bool\": {\"aws:SecureTransport\":\"false\"}}, \"Principal\": \"*\"}]",
                 "managedRules": [
                     "S3_BUCKET_SSL_REQUESTS_ONLY"
                 ]

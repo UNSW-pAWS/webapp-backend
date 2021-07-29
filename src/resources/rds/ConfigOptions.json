@@ -4,7 +4,7 @@
             {
                 "propertyId": "Engine",
                 "type": "dropdown",
-                "default": "postgres",
+                "value": "postgres",
                 "values": [
                     "aurora",
                     "aurora-mysql",
@@ -25,7 +25,7 @@
             {
                 "propertyId": "DBInstanceClass",
                 "type": "dropdown",
-                "default": "db.m4",
+                "value": "db.m4",
                 "values": [
                     "db.t3.micro",
                     "db.t3.small",
@@ -145,13 +145,13 @@
             {
                 "propertyId": "AllocatedStorage",
                 "type": "free-text",
-                "default": "50",
+                "value": "50",
                 "pattern": "^[0-9]+$"
             },
             {
                 "propertyId": "AutoMinorVersionUpgrade",
                 "type": "boolean",
-                "default": true,
+                "value": true,
                 "managedRules": [
                     "RDS_AUTOMATIC_MINOR_VERSION_UPGRADE_ENABLED"
                 ]
@@ -159,7 +159,7 @@
             {
                 "propertyId": "PubliclyAccessible",
                 "type": "boolean",
-                "default": false,
+                "value": false,
                 "managedRules": [
                     "RDS_INSTANCE_PUBLIC_ACCESS_CHECK"
                 ]
@@ -167,7 +167,7 @@
             {
                 "propertyId": "EnableCloudwatchLogsExports",
                 "type": "json",
-                "default": "[\"postgresql\", \"upgrade\"]",
+                "value": "[\"postgresql\", \"upgrade\"]",
                 "managedRules": [
                     "RDS_LOGGING_ENABLED"
                 ]
@@ -175,7 +175,7 @@
             {
                 "propertyId": "StorageEncrypted",
                 "type": "boolean",
-                "default": true,
+                "value": true,
                 "managedRules": [
                     "RDS_STORAGE_ENCRYPTED"
                 ]

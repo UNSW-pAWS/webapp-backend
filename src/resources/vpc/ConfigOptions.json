@@ -4,7 +4,7 @@
             {
                 "propertyId": "CidrBlock",
                 "type": "free-text",
-                "default": "10.0.0.0/16",
+                "value": "10.0.0.0/16",
                 "pattern": "^[0-9.\/]+$"
             }
         ],
@@ -16,13 +16,13 @@
             {
                 "propertyId": "GroupDescription",
                 "type": "free-text",
-                "default": "VPC Security Group",
+                "value": "VPC Security Group",
                 "pattern": "^[a-z0-0\\s._-:/()#,@[]+=&;{}!$*]$"
             },
             {
                 "propertyId": "SecurityGroupEgress",
                 "type": "json",
-                "default": "[{ \"CidrIp\": \"127.0.0.1/32\", \"IpProtocol\": \"-1\" }]",
+                "value": "[{ \"CidrIp\": \"127.0.0.1/32\", \"IpProtocol\": \"-1\" }]",
                 "managedRules": [
                     "VPC_DEFAULT_SECURITY_GROUP_CLOSED"
                 ]
@@ -30,7 +30,7 @@
             {
                 "propertyId": "SecurityGroupIngress",
                 "type": "json",
-                "default": "[{ \"CidrIp\": \"127.0.0.1/32\", \"FromPort\": 443, \"ToPort\": 443, \"IpProtocol\": \"-1\" }]",
+                "value": "[{ \"CidrIp\": \"127.0.0.1/32\", \"FromPort\": 443, \"ToPort\": 443, \"IpProtocol\": \"-1\" }]",
                 "managedRules": [
                     "VPC_DEFAULT_SECURITY_GROUP_CLOSED",
                     "VPC_SG_OPEN_ONLY_TO_AUTHORIZED_PORTS"
@@ -45,7 +45,7 @@
             {
                 "propertyId": "TrafficType",
                 "type": "dropdown",
-                "default": "ALL",
+                "value": "ALL",
                 "values": [
                     "ACCEPT",
                     "ALL",
