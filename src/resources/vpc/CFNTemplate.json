@@ -7,27 +7,14 @@
                 "CidrBlock": "10.0.0.0/16"
             }
         },
-        "VPCSecurityGroup": {
-            "Type": "AWS::EC2::SecurityGroup",
+        "VPCDefaultSecurityGroupEgress": {
+            "Type": "AWS::EC2::SecurityGroupEgress",
             "Properties": {
-                "GroupDescription": "VPC Security Group",
-                "VpcId": {
-                    "Ref": "MyVPC"
+                "GroupId": {
+                    "Fn::GetAtt": ["MyVPC", "DefaultSecurityGroup"]
                 },
-                "SecurityGroupIngress": [
-                    {
-                        "CidrIp": "127.0.0.1/32",
-                        "FromPort": 443,
-                        "ToPort": 443,
-                        "IpProtocol": "-1"
-                    }
-                ],
-                "SecurityGroupEgress": [
-                    {
-                        "CidrIp": "127.0.0.1/32",
-                        "IpProtocol": "-1"
-                    }
-                ]
+                "CidrIp": "127.0.0.1/32",
+                "IpProtocol": "-1"
             }
         },
         "VPCFlowLog": {
