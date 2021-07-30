@@ -1,0 +1,70 @@
+{
+    "rules": [
+        {
+            "ruleName": "EC2_IMDSV2_CHECK",
+            "selected": false
+        },
+        {
+            "ruleName": "EC2_INSTANCE_MULTIPLE_ENI_CHECK",
+            "selected": false
+        },
+        {
+            "ruleName": "EC2_INSTANCE_NO_PUBLIC_IP",
+            "selected": false
+        },
+        {
+            "ruleName": "EC2_INSTANCE_PROFILE_ATTACHED",
+            "selected": false
+        },
+        {
+            "ruleName": "EC2_SECURITY_GROUP_ATTACHED_TO_ENI",
+            "selected": false
+        },
+        {
+            "ruleName": "EC2_STOPPED_INSTANCE",
+            "selected": false
+        }
+    ],
+    "options": {
+        "AWS::EC2:Instance": {
+            "properties": [
+                {
+                    "propertyId": "NetworkInterface",
+                    "type": "json",
+                    "value": [],
+                    "managedRules": [
+                        "EC2_INSTANCE_MULTIPLE_ENI_CHECK",
+                        "EC2_INSTANCE_NO_PUBLIC_IP"
+                    ]
+                }
+            ]
+        },
+        "AWS::EC2::Volume": {
+            "properties": [
+                {
+                    "propertyId": "Encrypted",
+                    "type": "boolean",
+                    "value": true,
+                    "managedRules": [
+                        "EC2_EBS_ENCRYPTION_BY_DEFAULT"
+                    ]
+                }
+            ],
+            "multiple": false,
+            "required": false
+        },
+        "AWS::EC2:NetworkInterface": {
+            "properties": [
+                {
+                    "propertyId": "SubnetId",
+                    "type": "free-text",
+                    "value": "",
+                    "pattern": "^subnet-[0-9a-z]+$"
+                }
+            ],
+            "multiple": true,
+            "required": false
+        }
+    }
+
+}
