@@ -1,4 +1,4 @@
-Parameters:
+Resources:
   RdsAutomaticMinorVersionUpgradeEnabled:
     Properties:
       ConfigRuleName: rds-automatic-minor-version-upgrade-enabled
