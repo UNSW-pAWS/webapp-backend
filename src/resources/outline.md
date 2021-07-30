@@ -16,7 +16,7 @@ This directory contains the static files for each supported resource. Each resou
 
 ### Configuration Options
 
-The configuration file will be parsed by the frontend which will render the available fields to the user. 
+The configuration file has two sections. The rules section will list all the available security-focused AWS Managed Rules which the user can select to include in their conformance pack. The options section will be parsed by the frontend which will render the available fields to the user. These options will then be put into the CloudFormation template starter.
 
 <br/>
 
@@ -24,21 +24,29 @@ Each configuration option file should follow the structure:
 
 ```
     {
-        <resource1-name>: {
-            "properties": [
-                {
-                    <property1-config>
-                },
-                .
-                .
-                etc.
-            ],
-            "multiple": true/false,
-            "required": true/false
-        },
-        .
-        .
-        etc.
+        "rules": [
+            {
+                "ruleName": <rule1>,
+                "selected": false
+            }
+        ],
+        "options": {
+            <resource1-name>: {
+                "properties": [
+                    {
+                        <property1-config>
+                    },
+                    .
+                    .
+                    etc.
+                ],
+                "multiple": true/false,
+                "required": true/false
+            },
+            .
+            .
+            etc.
+        }
     }
 ```
 | Parameter | Description | Constraint |

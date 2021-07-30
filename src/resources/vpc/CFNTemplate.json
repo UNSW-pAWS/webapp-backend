@@ -7,6 +7,16 @@
                 "CidrBlock": "10.0.0.0/16"
             }
         },
+        "VPCDefaultSecurityGroupIngress": {
+            "Type": "AWS::EC2::SecurityGroupEgress",
+            "Properties": {
+                "GroupId": {
+                    "Fn::GetAtt": ["MyVPC", "DefaultSecurityGroup"]
+                },
+                "CidrIp": "127.0.0.1/32",
+                "IpProtocol": "-1"
+            }
+        },
         "VPCDefaultSecurityGroupEgress": {
             "Type": "AWS::EC2::SecurityGroupEgress",
             "Properties": {
