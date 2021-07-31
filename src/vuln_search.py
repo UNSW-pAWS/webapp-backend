@@ -25,10 +25,10 @@ async def package_list_data(package_dic, severity="None", date="None"):
 async def extract_relevant_data(work_queue, severity="None", date="None",all_data={}):
     async with aiohttp.ClientSession() as session:
         while not work_queue.empty():
-            search_word = await work_queue.get()
-            if search_word == "": return []
+            original_word = await work_queue.get()
+            if original_word == "": return []
 
-            search_word = search_word.replace("-", "+")
+            search_word = original_word.replace("-", "+")
             if date == "None": 
                 endpoint = "https://services.nvd.nist.gov/rest/json/cves/1.0?keyword=" + f'{search_word}'
             else: 
@@ -37,7 +37,7 @@ async def extract_relevant_data(work_queue, severity="None", date="None",all_dat
                 cve_result = await cve_response.json()
 
                 if cve_result['totalResults'] == 0:
-                    all_data[search_word] = []
+                    all_data[original_word] = []
                     return
                 cve_result = cve_result['result']['CVE_Items']
                 result_list = []
@@ -61,7 +61,7 @@ async def extract_relevant_data(work_queue, severity="None", date="None",all_dat
 
                     if severity == "None" or dic.get("base_severity") in severity: 
                         result_list.append(dic)
-                all_data[search_word] = result_list
+                all_data[original_word] = result_list
                 
 
 # root_packages = {"react", "node"}
