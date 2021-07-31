@@ -283,4 +283,84 @@ VPC_SG_OPEN_ONLY_TO_AUTHORIZED_PORTS:
       - Fn::Equals:
         - ''
         - Ref: VpcSgOpenOnlyToAuthorizedPortsParamAuthorizedTcpPorts
-
+EC2_IMDSV2_CHECK:
+  Parameters: {}
+  Rule:
+    Ec2Imdsv2Check:
+      Properties:
+        ConfigRuleName: ec2-imdsv2-check
+        Scope:
+          ComplianceResourceTypes:
+          - AWS::EC2::Instance
+        Source:
+          Owner: AWS
+          SourceIdentifier: EC2_IMDSV2_CHECK
+      Type: AWS::Config::ConfigRule
+  Conditions: {}
+EC2_INSTANCE_MULTIPLE_ENI_CHECK:
+  Parameters: {}
+  Rule:
+    Ec2InstanceMultipleEniCheck:
+      Properties:
+        ConfigRuleName: ec2-instance-multiple-eni-check
+        Scope:
+          ComplianceResourceTypes:
+          - AWS::EC2::Instance
+        Source:
+          Owner: AWS
+          SourceIdentifier: EC2_INSTANCE_MULTIPLE_ENI_CHECK
+      Type: AWS::Config::ConfigRule
+  Conditions: {}
+EC2_INSTANCE_NO_PUBLIC_IP:
+  Parameters: {}
+  Rule:
+    Ec2InstanceNoPublicIp:
+      Properties:
+        ConfigRuleName: ec2-instance-no-public-ip
+        Scope:
+          ComplianceResourceTypes:
+          - AWS::EC2::Instance
+        Source:
+          Owner: AWS
+          SourceIdentifier: EC2_INSTANCE_NO_PUBLIC_IP
+      Type: AWS::Config::ConfigRule
+  Conditions: {}
+EC2_INSTANCE_PROFILE_ATTACHED:
+  Parameters: {}
+  Rule:
+    Ec2InstanceProfileAttached:
+      Properties:
+        ConfigRuleName: ec2-instance-profile-attached
+        Scope:
+          ComplianceResourceTypes:
+          - AWS::EC2::Instance
+        Source:
+          Owner: AWS
+          SourceIdentifier: EC2_INSTANCE_PROFILE_ATTACHED
+      Type: AWS::Config::ConfigRule
+  Conditions: {}
+EC2_SECURITY_GROUP_ATTACHED_TO_ENI:
+  Parameters: {}
+  Rule:
+    Ec2SecurityGroupAttachedToEni:
+      Properties:
+        ConfigRuleName: ec2-security-group-attached-to-eni
+        Scope:
+          ComplianceResourceTypes:
+          - AWS::EC2::SecurityGroup
+        Source:
+          Owner: AWS
+          SourceIdentifier: EC2_SECURITY_GROUP_ATTACHED_TO_ENI
+      Type: AWS::Config::ConfigRule
+  Conditions: {}
+EC2_STOPPED_INSTANCE:
+  Parameters: {}
+  Rule:
+    Ec2StoppedInstance:
+      Properties:
+        ConfigRuleName: ec2-stopped-instance
+        Source:
+          Owner: AWS
+          SourceIdentifier: EC2_STOPPED_INSTANCE
+      Type: AWS::Config::ConfigRule
+  Conditions: {}
