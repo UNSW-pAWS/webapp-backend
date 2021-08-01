@@ -17,6 +17,8 @@ def npm_dependecies_search(package_list, level, results):
 		new_explore_frontiers = []
 		# if explored to level desired return result
 		if level_explored == level:
+			for frontier in explore_frontiers:
+				results[frontier] = []
 			return
 		# loop through the levels
 		for frontier in explore_frontiers:
