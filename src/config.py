@@ -1,9 +1,10 @@
-from json import dumps
+import json
 import requests
 import re
 
 from flask import Blueprint, request
 import boto3
+import yaml
 
 CONFIG = Blueprint('config', __name__)
 
@@ -62,6 +63,32 @@ def startEval(rule_names):
   res = client.start_config_rules_evaluation(ConfigRuleNames=rule_names)
   return res
 
+def createCloudFormation(data):
+  template = {}
+  template.update({"AWSTemplateFormatVersion" : "2010-09-09"})
+  parameters = {}
+  resources = {}
+  for resource in data.get("resources"):
+    resources.update(resource)
+  for parameter in data.get("parameters"):
+    parameters.update(parameters)
+  template.update({"Parameters" : parameters})
+  template.update({"Resources" : resources})
+  return json.dumps(template)
+
+def createConformancePack(data):
+  fd = open('resources/ManagedRules.yaml', 'r')
+  managed_rules = yaml.load(fd)
+  pack = {}
+  resources = {}
+  for rule in data.get("rules"):
+    if rule["selected"] == False:
+      pass
+    new_rule = managed_rules.get(rule.get("ruleName")).get("Rule")
+    resources.update(new_rule)
+  pack.update({"Resources": resources})
+  return yaml.dump(resources)
+
 # Routes -----------------------------------------
 
 @CONFIG.route("/config/options", methods=['GET'])
@@ -69,25 +96,25 @@ def get_config():
     service   = request.args.get('service')
     resource  = request.args.get('resource')
     data      = getConfig(service, resource)
-    return dumps(data)
+    return json.dumps(data)
 
 @CONFIG.route("/config/rules", methods=['GET'])
 def get_rules():
   data = getConfigRules()
-  return dumps(data)
+  return json.dumps(data)
 
 @CONFIG.route("/config/rules/managed", methods=['GET'])
 def get_managed_rules():
   data = getManagedRules()
-  return dumps(data)
+  return json.dumps(data)
 
 @CONFIG.route("/config/rule", methods=['POST'])
 def add_rule():
   data = putNewRule()
-  return dumps(data)
+  return json.dumps(data)
 
 @CONFIG.route("/config/evaluate", methods=['POST'])
 def evaluate_config():
   rule_names = request.args.get('name')
   data = startEval([rule_names])
-  return dumps(data)
+  return json.dumps(data)
