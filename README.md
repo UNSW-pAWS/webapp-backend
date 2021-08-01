@@ -4,7 +4,7 @@
 
 # Location of physical api gateway
 The following is where our live api gatway is located
-```http://dependency.eba-suunxfcc.ap-southeast-2.elasticbeanstalk.com/```
+```http://dependency.eba-5uazmhpj.ap-southeast-2.elasticbeanstalk.com/```
 ## Steps to set up environment
 
 1. `sudo apt-get install python3-venv` (if needed)
