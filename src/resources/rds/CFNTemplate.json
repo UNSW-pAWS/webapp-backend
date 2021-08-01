@@ -1,0 +1,22 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Resources": {
+        "MyDB": {
+            "Type": "AWS::RDS::DBInstance",
+            "Properties": {
+                "Engine": "postgres",
+                "DBInstanceClass": "db.m4.large",
+                "AllocatedStorage": "50",
+                "AutoMinorVersionUpgrade": true,
+                "PubliclyAccessible": false,
+                "EnableCloudwatchLogsExports": [
+                    "postgresql",
+                    "upgrade"
+                ],
+                "StorageEncrypted": true,
+                "MasterUsername": "root",
+                "MasterUserPassword": "rootpassword"
+            }
+        }
+    }
+}

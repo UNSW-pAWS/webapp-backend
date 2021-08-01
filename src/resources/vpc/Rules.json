@@ -1,0 +1,14 @@
+[
+    {
+        "name": "VPC_DEFAULT_SECURITY_GROUP_CLOSED",
+        "rule": ""
+    },
+    {
+        "name": "VPC_SG_OPEN_ONLY_TO_AUTHORIZED_PORTS",
+        "rule": ""
+    },
+    {
+        "name": "VPC_FLOW_LOGS_ENABLED",
+        "rule": "TrafficType should be not empty"
+    }
+]
