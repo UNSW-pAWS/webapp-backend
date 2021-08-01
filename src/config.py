@@ -66,14 +66,8 @@ def startEval(rule_names):
 def createCloudFormation(data):
   template = {}
   template.update({"AWSTemplateFormatVersion" : "2010-09-09"})
-  parameters = {}
-  resources = {}
-  for resource in data.get("resources"):
-    resources.update(resource)
-  for parameter in data.get("parameters"):
-    parameters.update(parameters)
-  template.update({"Parameters" : parameters})
-  template.update({"Resources" : resources})
+  template.update({"Parameters" : data.get("parameters")})
+  template.update({"Resources" : data.get("resources")})
   return json.dumps(template)
 
 def createConformancePack(data):
