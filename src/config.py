@@ -66,9 +66,9 @@ def startEval(rule_names):
 def createCloudFormation(data):
   template = {}
   template.update({"AWSTemplateFormatVersion" : "2010-09-09"})
-  template.update({"Parameters" : data.get("parameters")})
-  template.update({"Resources" : data.get("resources")})
-  return json.dumps(template)
+  # template.update({"Parameters" : data.get("parameters")})
+  template.update({"Resources" : data.get("options")})
+  return template
 
 def createConformancePack(data):
   fd = open('resources/ManagedRules.yaml', 'r')
@@ -81,7 +81,7 @@ def createConformancePack(data):
     new_rule = managed_rules.get(rule.get("ruleName")).get("Rule")
     resources.update(new_rule)
   pack.update({"Resources": resources})
-  return yaml.dump(resources)
+  return pack
 
 # Routes -----------------------------------------
 
@@ -112,3 +112,20 @@ def evaluate_config():
   rule_names = request.args.get('name')
   data = startEval([rule_names])
   return json.dumps(data)
+
+@CONFIG.route("/config/generate/cfn", methods=['GET'])
+def generate_cloudformation():
+  config_options = request.get_json()
+  print("JSON")
+  print(config_options)
+  print("CFN")
+  cfn_template = createCloudFormation(config_options)
+  print(cfn_template)
+  return json.dumps(cfn_template)
+
+@CONFIG.route("/config/generate/cfc", methods=['GET'])
+def generate_conformance():
+  config_options = request.get_json()
+  conformance_pack = createConformancePack(config_options)
+  print(conformance_pack)
+  return yaml.dump(conformance_pack)
