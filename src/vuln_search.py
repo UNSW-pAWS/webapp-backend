@@ -34,34 +34,37 @@ async def extract_relevant_data(work_queue, severity="None", date="None",all_dat
             else: 
                 endpoint = "https://services.nvd.nist.gov/rest/json/cves/1.0?modStartDate=" + f'{date}' + "T00:00:00:000 UTC-05:00&keyword=" + f'{search_word}'
             async with session.get(endpoint) as cve_response:
-                cve_result = await cve_response.json()
-
-                if cve_result['totalResults'] == 0:
+                if (cve_response.status == 200):
+                    cve_result = await cve_response.json()
+    
+                    if cve_result['totalResults'] == 0:
+                        all_data[original_word] = []
+                        return
+                    cve_result = cve_result['result']['CVE_Items']
+                    result_list = []
+                    for x in cve_result:
+                        dic = {'cve_id': x['cve']['CVE_data_meta']['ID'],
+                               'reference_links': [y['url'] for y in x['cve']['references']['reference_data']],
+                               'description': [y['value'] for y in x['cve']['description']['description_data']],
+                               'cve_data_version': x['configurations']['CVE_data_version'],
+                               'published_date': x['publishedDate'],
+                               'last_modified_date': x['lastModifiedDate']}
+                        if 'baseMetricV3' in x['impact']:
+                            dic['base_score'] = x['impact']['baseMetricV3']['cvssV3']['baseScore']
+                            dic['base_severity'] = x['impact']['baseMetricV3']['cvssV3']['baseSeverity']
+                            dic['exploitability_score'] = x['impact']['baseMetricV3']['exploitabilityScore']
+                            dic['impact_score'] =  x['impact']['baseMetricV3']['impactScore']
+                        elif 'baseMetricV2' in x['impact']:
+                            dic['base_score'] = x['impact']['baseMetricV2']['cvssV2']['baseScore']
+                            # dic['base_severity'] = x['impact']['baseMetricV2']['cvssV2']['baseSeverity']
+                            dic['exploitability_score'] = x['impact']['baseMetricV2']['exploitabilityScore']
+                            dic['impact_score'] = x['impact']['baseMetricV2']['impactScore']
+    
+                        if severity == "None" or dic.get("base_severity") in severity: 
+                            result_list.append(dic)
+                    all_data[original_word] = result_list
+                else:
                     all_data[original_word] = []
-                    return
-                cve_result = cve_result['result']['CVE_Items']
-                result_list = []
-                for x in cve_result:
-                    dic = {'cve_id': x['cve']['CVE_data_meta']['ID'],
-                           'reference_links': [y['url'] for y in x['cve']['references']['reference_data']],
-                           'description': [y['value'] for y in x['cve']['description']['description_data']],
-                           'cve_data_version': x['configurations']['CVE_data_version'],
-                           'published_date': x['publishedDate'],
-                           'last_modified_date': x['lastModifiedDate']}
-                    if 'baseMetricV3' in x['impact']:
-                        dic['base_score'] = x['impact']['baseMetricV3']['cvssV3']['baseScore']
-                        dic['base_severity'] = x['impact']['baseMetricV3']['cvssV3']['baseSeverity']
-                        dic['exploitability_score'] = x['impact']['baseMetricV3']['exploitabilityScore']
-                        dic['impact_score'] =  x['impact']['baseMetricV3']['impactScore']
-                    elif 'baseMetricV2' in x['impact']:
-                        dic['base_score'] = x['impact']['baseMetricV2']['cvssV2']['baseScore']
-                        # dic['base_severity'] = x['impact']['baseMetricV2']['cvssV2']['baseSeverity']
-                        dic['exploitability_score'] = x['impact']['baseMetricV2']['exploitabilityScore']
-                        dic['impact_score'] = x['impact']['baseMetricV2']['impactScore']
-
-                    if severity == "None" or dic.get("base_severity") in severity: 
-                        result_list.append(dic)
-                all_data[original_word] = result_list
                 
 
 # root_packages = {"react", "node"}
