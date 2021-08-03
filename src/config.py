@@ -1,4 +1,5 @@
 import json
+from os import close
 import requests
 import re
 
@@ -63,11 +64,17 @@ def startEval(rule_names):
   res = client.start_config_rules_evaluation(ConfigRuleNames=rule_names)
   return res
 
-def createCloudFormation(data):
-  template = {}
-  template.update({"AWSTemplateFormatVersion" : "2010-09-09"})
-  # template.update({"Parameters" : data.get("parameters")})
-  template.update({"Resources" : data.get("options")})
+def createCloudFormation(name, data):
+  fd = open(f'resources/{name}/CFNTemplate.json', 'r')
+  template = json.load(fd)
+  resources = template.get("Resources")
+  data = data.get("options")
+  for typeId in data.keys():
+    for resourceName in resources:
+      if typeId == resources.get(resourceName).get("Type"):
+        template_props = resources.get(resourceName).get("Properties")
+        for prop in data.get(typeId).get("properties"):
+          template_props.update({ prop.get("propertyId") : prop.get("value") })
   return template
 
 def createConformancePack(data):
@@ -115,12 +122,9 @@ def evaluate_config():
 
 @CONFIG.route("/config/generate/cfn", methods=['GET'])
 def generate_cloudformation():
+  config_name = request.args.get('resource')
   config_options = request.get_json()
-  print("JSON")
-  print(config_options)
-  print("CFN")
-  cfn_template = createCloudFormation(config_options)
-  print(cfn_template)
+  cfn_template = createCloudFormation(config_name, config_options)
   return json.dumps(cfn_template)
 
 @CONFIG.route("/config/generate/cfc", methods=['GET'])
