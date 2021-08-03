@@ -1,0 +1,85 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Resources": {
+        "MyVPC": {
+            "Type": "AWS::EC2::VPC",
+            "Properties": {
+                "CidrBlock": "10.0.0.0/16"
+            }
+        },
+        "VPCDefaultSecurityGroupIngress": {
+            "Type": "AWS::EC2::SecurityGroupEgress",
+            "Properties": {
+                "GroupId": {
+                    "Fn::GetAtt": ["MyVPC", "DefaultSecurityGroup"]
+                },
+                "CidrIp": "127.0.0.1/32",
+                "IpProtocol": "-1"
+            }
+        },
+        "VPCDefaultSecurityGroupEgress": {
+            "Type": "AWS::EC2::SecurityGroupEgress",
+            "Properties": {
+                "GroupId": {
+                    "Fn::GetAtt": ["MyVPC", "DefaultSecurityGroup"]
+                },
+                "CidrIp": "127.0.0.1/32",
+                "IpProtocol": "-1"
+            }
+        },
+        "VPCFlowLog": {
+            "Type": "AWS::EC2::FlowLog",
+            "Properties": {
+                "ResourceId": {
+                    "Ref": "MyVPC"
+                },
+                "DeliverLogsPermissionArn": {
+                    "Fn::GetAtt": [
+                        "LogsIAMRole",
+                        "Arn"
+                    ]
+                },
+                "ResourceType": "VPC",
+                "TrafficType": "ALL",
+                "LogGroupName": "MyVpcFlowLogsGroup"
+            }
+        },
+        "LogsIAMRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": [
+                                    "ec2.amazonaws.com"
+                                ]
+                            },
+                            "Action": [
+                                "sts:AssumeRole"
+                            ]
+                        }
+                    ]
+                },
+                "Path": "/",
+                "Policies": [
+                    {
+                        "PolicyName": "root",
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": "*",
+                                    "Resource": "*"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

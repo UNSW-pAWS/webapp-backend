@@ -1,0 +1,44 @@
+Parameters:
+  VpcSgOpenOnlyToAuthorizedPortsParamAuthorizedTcpPorts:
+    Default: '443'
+    Type: String
+Resources:
+  VpcDefaultSecurityGroupClosed:
+    Properties:
+      ConfigRuleName: vpc-default-security-group-closed
+      Scope:
+        ComplianceResourceTypes:
+        - AWS::EC2::SecurityGroup
+      Source:
+        Owner: AWS
+        SourceIdentifier: VPC_DEFAULT_SECURITY_GROUP_CLOSED
+    Type: AWS::Config::ConfigRule
+  VpcFlowLogsEnabled:
+    Properties:
+      ConfigRuleName: vpc-flow-logs-enabled
+      Source:
+        Owner: AWS
+        SourceIdentifier: VPC_FLOW_LOGS_ENABLED
+    Type: AWS::Config::ConfigRule
+  VpcSgOpenOnlyToAuthorizedPorts:
+    Properties:
+      ConfigRuleName: vpc-sg-open-only-to-authorized-ports
+      InputParameters:
+        authorizedTcpPorts:
+          Fn::If:
+          - vpcSgOpenOnlyToAuthorizedPortsParamAuthorizedTcpPorts
+          - Ref: VpcSgOpenOnlyToAuthorizedPortsParamAuthorizedTcpPorts
+          - Ref: AWS::NoValue
+      Scope:
+        ComplianceResourceTypes:
+        - AWS::EC2::SecurityGroup
+      Source:
+        Owner: AWS
+        SourceIdentifier: VPC_SG_OPEN_ONLY_TO_AUTHORIZED_PORTS
+    Type: AWS::Config::ConfigRule
+Conditions:
+  vpcSgOpenOnlyToAuthorizedPortsParamAuthorizedTcpPorts:
+    Fn::Not:
+    - Fn::Equals:
+      - ''
+      - Ref: VpcSgOpenOnlyToAuthorizedPortsParamAuthorizedTcpPorts
