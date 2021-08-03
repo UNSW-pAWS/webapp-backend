@@ -5,10 +5,12 @@ from flask import Flask
 from flask_cors import CORS
 
 from alt_pkgs import ALT_PKGS
+from config import CONFIG
 
 app = Flask(__name__)
 CORS(app)
 app.register_blueprint(ALT_PKGS)
+app.register_blueprint(CONFIG)
 
 def default_handler(err):
     response = err.get_response()
