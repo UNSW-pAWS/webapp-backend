@@ -84,7 +84,7 @@ def createConformancePack(data):
   resources = {}
   for rule in data.get("rules"):
     if rule["selected"] == False:
-      pass
+      continue
     new_rule = managed_rules.get(rule.get("ruleName")).get("Rule")
     resources.update(new_rule)
   pack.update({"Resources": resources})
