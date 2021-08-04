@@ -3,13 +3,13 @@ from json import dumps
 from flask import Flask
 from flask_cors import CORS
 
-from alt_pkgs import ALT_PKGS
 from threat import THREAT
+from config import CONFIG
 
 application = Flask(__name__)
 CORS(application)
-application.register_blueprint(ALT_PKGS)
 application.register_blueprint(THREAT)
+application.register_blueprint(CONFIG)
 
 def default_handler(err):
     response = err.get_response()

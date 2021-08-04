@@ -1,0 +1,6 @@
+[
+    {
+        "name": "LAMBDA_FUNCTION_PUBLIC_ACCESS_PROHIBITED",
+        "rule": "AWS::Lmanda::Permission.Principal !== *"
+    }
+]
