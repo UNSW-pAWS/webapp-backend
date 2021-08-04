@@ -46,8 +46,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.ANIKET_AWS_ACCESS }}
           aws_secret_key: ${{ secrets.ANIKET_AWS_SECRET }}
-          application_name: paws_backend
-          environment_name: paws_backend_env
+          application_name: paws-backend
+          environment_name: Pabackend-env
           version_label: "my-app-${{ steps.format-time.outputs.replaced }}"
           region: ap-southeast-2
           deployment_package: deploy.zip
