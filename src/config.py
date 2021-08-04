@@ -120,14 +120,14 @@ def evaluate_config():
   data = startEval([rule_names])
   return json.dumps(data)
 
-@CONFIG.route("/config/generate/cfn", methods=['GET'])
+@CONFIG.route("/config/generate/cfn", methods=['POST'])
 def generate_cloudformation():
   config_name = request.args.get('resource')
   config_options = request.get_json()
   cfn_template = createCloudFormation(config_name, config_options)
   return json.dumps(cfn_template)
 
-@CONFIG.route("/config/generate/cfc", methods=['GET'])
+@CONFIG.route("/config/generate/cfc", methods=['POST'])
 def generate_conformance():
   config_options = request.get_json()
   conformance_pack = createConformancePack(config_options)
