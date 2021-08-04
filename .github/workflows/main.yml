@@ -33,9 +33,9 @@ jobs:
         with:
           aws_access_key: ${{ secrets.ANIKET_AWS_ACCESS }}
           aws_secret_key: ${{ secrets.ANIKET_AWS_SECRET }}
-          application_name: dependency
-          environment_name: dependency
-#           version_label: app-210803_144831
+          application_name: paws_backend
+          environment_name: paws_backend_env
+          version_label: pb-1
           region: ap-southeast-2
           deployment_package: deploy.zip
-          use_existing_version_if_available: true
+#           use_existing_version_if_available: true
