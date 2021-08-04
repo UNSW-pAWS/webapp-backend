@@ -2,11 +2,14 @@
 
 > This is the backend for our Dependency Scrubbing Web App
 
+# Location of physical api gateway
+The following is where our live api gatway is located
+```http://dependency.eba-5uazmhpj.ap-southeast-2.elasticbeanstalk.com/```
 ## Steps to set up environment
 
 1. `sudo apt-get install python3-venv` (if needed)
 2. `python3 -m venv [environment-name]`
-3. `. [environment-name]/bin/activate`
+3. `. [environment-name]/bin/activate` or '[environment-name]\Scripts\activate' (windows)
 4. If using vscode, ensure the correct interpretor is set
 5. `python -m pip install --upgrade pip`
 6. `pip install -r requirements.txt`
