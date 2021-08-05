@@ -1,6 +1,16 @@
-# Webapp Backend
+# Configuration and Dependency Checking Tools
 
-> This is the backend for our Dependency Scrubbing Web App
+<br/>
+
+<p align="center">
+  <img width="200" src="./static/logo.png">
+</p>
+
+
+<br/>
+<br/>
+
+This is the core service of our Configuration and Dependency Checking application.
 
 # Location of physical api gateway
 The following is where our live api gatway is located
