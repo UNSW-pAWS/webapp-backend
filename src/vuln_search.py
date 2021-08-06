@@ -12,6 +12,8 @@ from package_detail_retrieval import package_detail_retrieval
 #The terms product and CPE are used interchangeably throughout this document.
 #CPE means Common Platform Enumeration, version 2.3, a standard for identifying and searching products. Need to include vulnerability cpes/1.0?addOns=cves
 
+
+
 async def package_list_data(package_dic, severity="None", date="None"):
     all_data = {}
     if len(package_dic) == 0:
@@ -83,14 +85,25 @@ def root_format(root_package, my_output, your_output, level, max_level):
             resulting_dic[i][0].update(root_format({dependency}, my_output, your_output, level+1, max_level))
     return resulting_dic
 
+async def test():
+    package_output = {'react': ['loose-envify', 'object-assign'], 'node': ['node-bin-setup'], 'loose-envify': ['js-tokens'], 'object-assign': [], 'node-bin-setup': []}
+# loop = new_event_loop()
+    await asyncio.run(package_list_data(package_output)) #, ["CRITICAL"], "2021-01-01")
+    print(steven_output)
+
+
 # print(new_function(root_packages, my_output, your_output))
 
 # print(package_detail_retrieval("npm", ["react", "node"], level=1))
 
 # package_list = ["react", "node"]
 # package_output = {'react': ['loose-envify', 'object-assign'], 'node': ['node-bin-setup'], 'loose-envify': ['js-tokens'], 'object-assign': [], 'node-bin-setup': []}
-# steven_output = package_list_data(package_output) #, ["CRITICAL"], "2021-01-01")
+# # loop = new_event_loop()
+# steven_output = asyncio.run(package_list_data(package_output)) #, ["CRITICAL"], "2021-01-01")
 
+# print(steven_output)
+# test()
+asyncio.run(test())
 # print(root_format(package_list, package_output, steven_output, 0, 1))
 
 # package_dic = package_detail_retrieval("npm", ["react", "node"])
