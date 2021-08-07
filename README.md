@@ -14,7 +14,7 @@ This is the core service of our Configuration and Dependency Checking applicatio
 
 # Location of physical api gateway
 The following is where our live api gatway is located
-```http://dependency.eba-5uazmhpj.ap-southeast-2.elasticbeanstalk.com/```
+```https://paws-backend.link/threat/search```
 ## Steps to set up environment
 
 1. `sudo apt-get install python3-venv` (if needed)
