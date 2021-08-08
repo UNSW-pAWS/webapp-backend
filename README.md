@@ -11,14 +11,15 @@
 <br/>
 
 This is the core service of our Configuration and Dependency Checking application.
-
+<br />
 ## Table of Contents
-1. [Location of physical api gateway] (#Location-of-physical-api-gateway)
+1. [Location of physical api gateway](#location-of-physical-api-gateway)
 2. [Developer Guide](#developer-guide)
     1. [How to run](#how-to-run)
-    2. [Local Imports aren't being resolved in vscode?](#running-with-docker)
+    2. [Local Imports not being resolved in VScode?](#local-imports-not-being-resolved-in-vscode)
     3. [Deployment](#deployment)
-3. [User Guide](#user-guide)
+
+<br />
 
 ## Location of physical api gateway
 The following is where our live api gatway is located
@@ -37,7 +38,7 @@ The following is where our live api gatway is located
 
 Note: .gitignore will ensure your .vscode and venv folders do not get accidentally committed
 
-### Local Imports aren't being resolved in vscode?
+### Local Imports not being Resolved in VSCode?
 If you use pylance as your python engine, you may have to add `"python.analysis.extraPaths": ["./src"]` to your settings.json inside the .vscode folder
 
 ### Deployment
