@@ -31,4 +31,4 @@ Note: .gitignore will ensure your .vscode and venv folders do not get accidental
 If you use pylance as your python engine, you may have to add `"python.analysis.extraPaths": ["./src"]` to your settings.json inside the .vscode folder
 
 ## Tests
-We have conducted both unit and integration tests in '/src/tests'
+We have conducted both unit and integration tests in `/src/tests`
