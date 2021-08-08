@@ -14,7 +14,7 @@ This is the core service of our Configuration and Dependency Checking applicatio
 
 # Location of physical api gateway
 The following is where our live api gatway is located
-```https://paws-backend.link/threat/search```
+```https://paws-backend.link/```
 ## Steps to set up environment
 
 1. `sudo apt-get install python3-venv` (if needed)
@@ -29,3 +29,6 @@ Note: .gitignore will ensure your .vscode and venv folders do not get accidental
 
 #### Local Imports aren't being resolved in vscode?
 If you use pylance as your python engine, you may have to add `"python.analysis.extraPaths": ["./src"]` to your settings.json inside the .vscode folder
+
+## Tests
+We have conducted both unit and integration tests in '/src/tests'
